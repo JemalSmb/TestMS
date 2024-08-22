@@ -6,10 +6,11 @@ const AdHandler = () => {
     const [timer, setTimer] = useState(5); // 5 seconds timer
     const [error, setError] = useState(null);
 
+    // Fetch ads when the component mounts
     useEffect(() => {
         const fetchAds = async () => {
             try {
-                const response = await fetch("https://cors-anywhere.herokuapp.com/https://metasurfai-public-api.fly.dev/v1");
+                const response = await fetch("/api/v1");
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -26,7 +27,7 @@ const AdHandler = () => {
                 console.error("Error fetching ads:", error);
             }
         };
-
+    
         fetchAds();
     }, []);
 

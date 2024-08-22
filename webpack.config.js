@@ -23,6 +23,12 @@ module.exports = {
                 changeOrigin: true,
                 pathRewrite: { '^/api': '' },
                 secure: false,
+                secure: false,
+                onProxyRes: function (proxyRes, req, res) {
+                    proxyRes.headers['Access-Control-Allow-Origin'] = '*';
+                    proxyRes.headers['Access-Control-Allow-Methods'] = 'GET,OPTIONS,PATCH,DELETE,POST,PUT';
+                    proxyRes.headers['Access-Control-Allow-Headers'] = 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version';
+                },
             },
         ],
         hot: true,
