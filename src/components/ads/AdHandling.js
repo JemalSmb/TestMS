@@ -10,7 +10,7 @@ const AdHandler = () => {
     useEffect(() => {
         const fetchAds = async () => {
             try {
-                const response = await fetch("/api/v1");
+                const response = await fetch("https://metasurfai-public-api.fly.dev/v1");
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -27,7 +27,7 @@ const AdHandler = () => {
                 console.error("Error fetching ads:", error);
             }
         };
-    
+
         fetchAds();
     }, []);
 
