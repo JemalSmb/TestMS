@@ -27,7 +27,7 @@ const AdHandler = () => {
                 console.error("Error fetching ads:", error);
             }
         };
-    
+
         fetchAds();
     }, []);
 
