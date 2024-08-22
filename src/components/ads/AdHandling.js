@@ -13,7 +13,11 @@ const AdHandler = () => {
                 const response = await fetch("/api/v1");
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
-                  }
+                }
+                const contentType = response.headers.get("content-type");
+                if (!contentType || !contentType.includes("application/json")) {
+                    throw new Error("Received non-JSON response");
+                }
                 const data = await response.json();
                 setAds(data);
             } catch (error) {
