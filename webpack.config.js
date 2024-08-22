@@ -16,13 +16,11 @@ module.exports = {
             directory: path.resolve(__dirname, 'dist'),
         },
         historyApiFallback: true,
-        proxy: [
-            {
-                context: ['/api'],
+        proxy: {
+            '/api': {
                 target: 'https://metasurfai-public-api.fly.dev',
                 changeOrigin: true,
                 pathRewrite: { '^/api': '' },
-                secure: false,
                 secure: false,
                 onProxyRes: function (proxyRes, req, res) {
                     proxyRes.headers['Access-Control-Allow-Origin'] = '*';
@@ -30,7 +28,7 @@ module.exports = {
                     proxyRes.headers['Access-Control-Allow-Headers'] = 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version';
                 },
             },
-        ],
+        },
         hot: true,
     },
     module: {
