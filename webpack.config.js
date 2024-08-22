@@ -77,11 +77,10 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
-            filename: 'index.html',
         }),
         new CopyWebpackPlugin({
             patterns: [
-                { from: 'public', to: '' }, // Copy all files from public to dist/public
+                { from: 'public', to: 'dist' }, // Copy all files from public to dist/public
             ],
         }),
         new webpack.HotModuleReplacementPlugin(),
