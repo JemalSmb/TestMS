@@ -10,15 +10,24 @@ const AdHandler = () => {
         const fetchAds = async () => {
             try {
                 const response = await fetch("/api/v1");
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                  }
                 const data = await response.json();
                 setAds(data);
             } catch (error) {
+                setError(error.message);
                 console.error("Error fetching ads:", error);
             }
         };
 
         fetchAds();
     }, []);
+    
+    if (error) {
+        return <div>Error: {error}</div>;
+      }
+    
 
     // Handle ad click
     const handleAdClick = (ad) => {
