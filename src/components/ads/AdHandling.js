@@ -16,6 +16,8 @@ const AdHandler = () => {
                 }
                 const contentType = response.headers.get("content-type");
                 if (!contentType || !contentType.includes("application/json")) {
+                    const text = await response.text(); // Read the response as text
+                    console.error("Received non-JSON response:", text); // Log the response text
                     throw new Error("Received non-JSON response");
                 }
                 const data = await response.json();
@@ -25,7 +27,7 @@ const AdHandler = () => {
                 console.error("Error fetching ads:", error);
             }
         };
-
+    
         fetchAds();
     }, []);
 
