@@ -4,6 +4,7 @@ const AdHandler = () => {
     const [ads, setAds] = useState([]);
     const [selectedAd, setSelectedAd] = useState(null);
     const [timer, setTimer] = useState(5); // 5 seconds timer
+    const [error, setError] = useState(null);
 
     // Fetch ads when the component mounts
     useEffect(() => {
@@ -23,7 +24,7 @@ const AdHandler = () => {
 
         fetchAds();
     }, []);
-    
+
     if (error) {
         return <div>Error: {error}</div>;
       }
