@@ -16,19 +16,15 @@ module.exports = {
             directory: path.resolve(__dirname, 'dist'),
         },
         historyApiFallback: true,
-        proxy: {
-            '/api': {
+        proxy: [
+            {
+                context: ['/api'],
                 target: 'https://metasurfai-public-api.fly.dev',
                 changeOrigin: true,
                 pathRewrite: { '^/api': '' },
                 secure: false,
-                onProxyRes: function (proxyRes, req, res) {
-                    proxyRes.headers['Access-Control-Allow-Origin'] = '*';
-                    proxyRes.headers['Access-Control-Allow-Methods'] = 'GET,OPTIONS,PATCH,DELETE,POST,PUT';
-                    proxyRes.headers['Access-Control-Allow-Headers'] = 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version';
-                },
             },
-        },
+        ],
         hot: true,
     },
     module: {
@@ -77,10 +73,11 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
+            filename: 'index.html',
         }),
         new CopyWebpackPlugin({
             patterns: [
-                { from: 'public', to: 'dist' }, // Copy all files from public to dist/public
+                { from: 'public', to: '' }, // Copy all files from public to dist/public
             ],
         }),
         new webpack.HotModuleReplacementPlugin(),
