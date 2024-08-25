@@ -4,7 +4,7 @@ function Profile() {
     const [profileData, setProfileData] = useState(null);
 
     useEffect(() => {
-        fetch('api/v1/profile?username=nayem')
+        fetch('https://metasurfai-public-api.fly.dev/api/v1/profile?username=nayem')
             .then(response => response.json())
             .then(data => setProfileData(data))
             .catch(error => console.error('Error fetching profile data:', error));

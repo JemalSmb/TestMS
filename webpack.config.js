@@ -15,17 +15,8 @@ module.exports = {
         static: {
             directory: path.resolve(__dirname, 'dist'),
         },
-        historyApiFallback: true,
-        proxy: [
-            {
-                context: ['/api'],
-                target: 'https://metasurfai-public-api.fly.dev',
-                changeOrigin: true,
-                pathRewrite: { '^/api': '' },
-                secure: false,
-            },
-        ],
         hot: true,
+        historyApiFallback: true,
     },
     module: {
         rules: [
@@ -80,7 +71,6 @@ module.exports = {
                 { from: 'public', to: '' }, // Copy all files from public to dist/public
             ],
         }),
-        new webpack.HotModuleReplacementPlugin(),
     ],
     performance: {
         maxAssetSize: 1024 * 1024, // Increase asset size limit to 1 MiB
