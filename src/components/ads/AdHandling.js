@@ -11,7 +11,7 @@ const AdHandler = () => {
             try {
                 const response = await fetch("/v1");
                 const data = await response.json();
-                console.log(response);
+                console.log(data);
                 setAds(data);
             } catch (error) {
                 console.error("Error fetching ads:", error);
