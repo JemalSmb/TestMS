@@ -4,26 +4,21 @@ const AdHandler = () => {
     const [ads, setAds] = useState([]);
     const [selectedAd, setSelectedAd] = useState(null);
     const [timer, setTimer] = useState(5); // 5 seconds timer
-    const [error, setError] = useState(null);
 
+    // Fetch ads when the component mounts
     useEffect(() => {
         const fetchAds = async () => {
             try {
                 const response = await fetch("/api/v1");
+                const data = await response.json();
                 setAds(data);
             } catch (error) {
-                setError(error.message);
                 console.error("Error fetching ads:", error);
             }
         };
 
         fetchAds();
     }, []);
-
-    if (error) {
-        return <div>Error: {error}</div>;
-      }
-    
 
     // Handle ad click
     const handleAdClick = (ad) => {
