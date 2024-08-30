@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import React from 'react';
 import ReactModal from 'react-modal';
-import menu from "../../public/icon-menu.png";
 import logo from "../../public/Logo.png";
 import LoginForm from './Login/Login';
 import SignUpForm from './Signup/Signup';
@@ -72,10 +71,10 @@ function NavBar(){
                         </li>
                         <li><a>Settings</a></li>
                         <li>
-                            <button onClick={() => toggleAuth('signup')} className='py-2 px-4 transition-all duration-300 rounded-2xl w-full text-left'>Signup</button>
+                            <button onClick={() => toggleAuth('signup')} className='py-2 px-4 transition-all duration-300 rounded-2xl w-full'>Signup</button>
                         </li>
                         <li>
-                            <button onClick={() => toggleAuth('login')} className='py-2 px-4 transition-all duration-300 rounded-2xl w-full text-left'>Login</button>
+                            <button onClick={() => toggleAuth('login')} className='py-2 px-4 transition-all duration-300 rounded-2xl w-full'>Login</button>
                         </li>
                     </ul>
                 </div>
