@@ -57,26 +57,26 @@ const LoginForm = () => {
                 <h2 className="text-2xl mb-4">Login</h2>
                 {error && <p className="text-red-500 mb-4">{error}</p>}
                 {success && <p className="text-green-500 mb-4">Login successful!</p>}
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
                     <div className="mb-4">
-                        <label className="block text-gray-700">Email:</label>
+                        <label className="block text-gray-700 font-semibold">Email:</label>
                         <input
                             type="email"
-                            className="form-input mt-1 block w-full border border-black text-black bg-white"
+                            className="form-input mt-1 block w-full border border-gray-300 rounded-md text-gray-900 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
                     <div className="mb-4 relative">
-                        <label className="block text-gray-700">Password:</label>
+                        <label className="block text-gray-700 font-semibold">Password:</label>
                         <input
                             type={showPassword ? "text" : "password"}
-                            className="form-input mt-1 block w-full border border-black text-black bg-white"
+                            className="form-input mt-1 block w-full border border-gray-300 rounded-md text-gray-900 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
                         <span
-                            className="flex items-center cursor-pointer"
+                            className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
                             onMouseDown={handleMouseDown}
                             onMouseUp={handleMouseUp}
                             onMouseLeave={handleMouseUp}
@@ -84,7 +84,7 @@ const LoginForm = () => {
                             <img src="/show-password.png" alt="Show Password" className="h-5 w-5" />
                         </span>
                     </div>
-                    <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Login</button>
+                    <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">Login</button>
                 </form>
             </div>
         </div>
