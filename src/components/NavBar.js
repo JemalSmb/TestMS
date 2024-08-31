@@ -65,31 +65,22 @@ function NavBar(){
                         </div>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow flex flex-col gap-2">
                         <li>
-                            <a
-                            className="justify-between flex items-center w-full"
+                            <a className="justify-between flex items-center w-full"
                             onClick={() => navigate('profile')}
-                            >
-                            Profile
-                            </a>
+                            >Profile</a>
                         </li>
                         <li>
                             <a className="flex items-center w-full">Settings</a>
                         </li>
                         <li>
-                            <button
-                            onClick={() => toggleAuth('signup')}
+                            <a onClick={() => toggleAuth('signup')}
                             className="py-2 px-4 transition-all duration-300 rounded-2xl w-full"
-                            >
-                            Signup
-                            </button>
+                            >Signup</a>
                         </li>
                         <li>
-                            <button
-                            onClick={() => toggleAuth('login')}
+                            <a onClick={() => toggleAuth('login')}
                             className="py-2 px-4 transition-all duration-300 rounded-2xl w-full"
-                            >
-                            Login
-                            </button>
+                            >Login</a>
                         </li>
                     </ul>
                 </div>
