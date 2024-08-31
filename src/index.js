@@ -19,5 +19,7 @@ if (appElement) {
 }
 
 if (module.hot) {
-   module.hot.accept();
+   module.hot.accept('./styles/styles.css', function() {
+       require('./styles/styles.css');
+   });
 }
