@@ -65,12 +65,12 @@ function NavBar(){
                         </div>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow flex flex-col gap-2">
                         <li>
-                            <a className="justify-between flex items-center w-full"
+                            <a className="py-2 px-4 justify-between flex items-center w-full"
                             onClick={() => navigate('profile')}
                             >Profile</a>
                         </li>
                         <li>
-                            <a className="flex items-center w-full">Settings</a>
+                            <a className="py-2 px-4 flex items-center w-full">Settings</a>
                         </li>
                         <li>
                             <a onClick={() => toggleAuth('signup')}
