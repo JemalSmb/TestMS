@@ -57,7 +57,7 @@ const LoginForm = () => {
                 <h2 className="text-2xl mb-4">Login</h2>
                 {error && <p className="text-red-500 mb-4">{error}</p>}
                 {success && <p className="text-green-500 mb-4">Login successful!</p>}
-                <form onSubmit={handleSubmit} className="max-w-md mx-auto p-6">
+                <form onSubmit={handleSubmit}>
                     <div className="mb-4">
                         <label className="block text-gray-100 font-semibold">Email:</label>
                         <input
