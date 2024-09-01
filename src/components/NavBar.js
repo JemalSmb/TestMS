@@ -99,9 +99,9 @@ function NavBar(){
                                 <li><a className="block px-4 py-2 text-lg text-gray-400"   
                                 onClick={() => { navigate('profile'); toggleMenu();}}>Profile</a></li>
                                 <li><a className="block px-4 py-2 text-lg text-gray-400"
-                                onClick={() => { toggleAuth('signup'); toggleMenu();}}>Login</a></li>
+                                onClick={() => { toggleAuth('login'); toggleMenu();}}>Login</a></li>
                                 <li><a className="block px-4 py-2 text-lg text-gray-400"
-                                onClick={() => { toggleAuth('login'); toggleMenu();}}>Signup</a></li>
+                                onClick={() => { toggleAuth('signup'); toggleMenu();}}>Signup</a></li>
                             </ul>
                         </div>
                     </div>
