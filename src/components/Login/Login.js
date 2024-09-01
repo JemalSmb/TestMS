@@ -1,15 +1,13 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import React from 'react';
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(true);
+
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
-
-    const modalRef = useRef(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -23,20 +21,6 @@ const LoginForm = () => {
         setShowPassword(false);
     };
 
-    const handleClickOutside = (e) => {
-        if (modalRef.current && !modalRef.current.contains(e.target)) {
-            setIsModalOpen(false);
-        }
-    };
-
-    useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
-
-    if (!isModalOpen) return null;
 
         // Create user object
         const userData = {
@@ -70,7 +54,7 @@ const LoginForm = () => {
     // };
 
     return (
-        <div className="flex justify-center items-center h-screen">
+        <div className="flex justify-center items-cente h-screen">
             <div className="bg-black bg-opacity-10 text-gray-100 p-8 rounded-lg shadow-lg backdrop-blur-md border-2 border-opacity-20 border-pink-600">                
                 <h2 className="text-2xl mb-4">Login</h2>
                 {error && <p className="text-red-500 mb-4">{error}</p>}
