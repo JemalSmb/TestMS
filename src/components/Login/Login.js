@@ -52,31 +52,31 @@ const LoginForm = () => {
     // };
 
     return (
-        <div className="flex justify-center items-center h-screen">
-            <div className="bg-white text-black p-8 rounded-lg shadow-lg">
+        <div className="flex justify-center items-center h-scree">
+            <div className="bg-black bg-opacity-10 text-gray-100 p-8 rounded-lg shadow-lg backdrop-blur-md border-2 border-opacity-20 border-pink-600">                
                 <h2 className="text-2xl mb-4">Login</h2>
                 {error && <p className="text-red-500 mb-4">{error}</p>}
                 {success && <p className="text-green-500 mb-4">Login successful!</p>}
-                <form onSubmit={handleSubmit} className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
+                <form onSubmit={handleSubmit} className="max-w-md mx-auto p-6">
                     <div className="mb-4">
-                        <label className="block text-gray-700 font-semibold">Email:</label>
+                        <label className="block text-gray-100 font-semibold">Email:</label>
                         <input
                             type="email"
-                            className="form-input mt-1 block w-full border border-gray-300 rounded-md text-gray-900 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                            className="form-input mt-1 block w-full border pl-2 border-gray-300 rounded-md text-gray-700 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
                     <div className="mb-4 relative">
-                        <label className="block text-gray-700 font-semibold">Password:</label>
+                        <label className="block text-gray-100 font-semibold">Password:</label>
                         <input
                             type={showPassword ? "text" : "password"}
-                            className="form-input mt-1 block w-full border border-gray-300 rounded-md text-gray-900 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                            className="form-input mt-1 block w-full pr-10 pl-2 border border-gray-300 rounded-md text-gray-700 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
                         <span
-                            className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
+                            className="absolute inset-y-0 right-0 pr-3 pt-6 flex items-center cursor-pointer"
                             onMouseDown={handleMouseDown}
                             onMouseUp={handleMouseUp}
                             onMouseLeave={handleMouseUp}
@@ -85,6 +85,7 @@ const LoginForm = () => {
                         </span>
                     </div>
                     <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">Login</button>
+                    <span class name="text-gray-100 text-sm mt-2 block text-center">Don't have an account? <a href="#" class name="text-blue-500 hover:underline">Register</a></span>
                 </form>
             </div>
         </div>
