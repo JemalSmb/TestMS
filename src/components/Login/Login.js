@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import React from 'react';
 
 const LoginForm = () => {
@@ -37,7 +37,7 @@ const LoginForm = () => {
     }, []);
 
     if (!isModalOpen) return null;
-    
+
         // Create user object
         const userData = {
             email: email,
