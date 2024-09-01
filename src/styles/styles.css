@@ -64,7 +64,7 @@ body {
 
 @media (max-width: 768px) {
     .ad-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
     }
 }
 
