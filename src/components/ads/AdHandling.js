@@ -4,6 +4,8 @@ const AdHandler = () => {
     const [ads, setAds] = useState([]);
     const [selectedAd, setSelectedAd] = useState(null);
     const [timer, setTimer] = useState(5); // 5 seconds timer
+    const [currentPage, setCurrentPage] = useState(1);
+    const adsPerPage = 9; // Display 9 ads per page
 
     // Fetch ads when the component mounts
     useEffect(() => {
@@ -43,10 +45,25 @@ const AdHandler = () => {
         }
     };
 
+    // Pagination logic
+    const indexOfLastAd = currentPage * adsPerPage;
+    const indexOfFirstAd = indexOfLastAd - adsPerPage;
+    const currentAds = ads.slice(indexOfFirstAd, indexOfLastAd);
+
+    const totalPages = Math.ceil(ads.length / adsPerPage);
+
+    const goToNextPage = () => {
+        setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+    };
+
+    const goToPreviousPage = () => {
+        setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+    };
+
     return (
         <div className="container w-11/12 min-h-screen m-auto relative">
-            <div className="ads-container grid grid-cols-3 gap-4 md:gap-6 lg:gap-8 xl:gap-10">
-                {ads.map((ad, index) => (
+            <div className="ads-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 xl:gap-10">
+                {currentAds.map((ad, index) => (
                     <div
                         className="ad relative h-96 border-5 shadow-md overflow-hidden cursor-pointer"
                         key={index}
@@ -63,6 +80,25 @@ const AdHandler = () => {
                         </div>
                     </div>
                 ))}
+            </div>
+
+            {/* Pagination Controls */}
+            <div className="pagination-controls mt-4 flex justify-center space-x-4">
+                <button
+                    onClick={goToPreviousPage}
+                    className="px-4 py-2 bg-gray-800 text-white rounded disabled:opacity-50"
+                    disabled={currentPage === 1}
+                >
+                    Previous
+                </button>
+                <span className="text-white">Page {currentPage} of {totalPages}</span>
+                <button
+                    onClick={goToNextPage}
+                    className="px-4 py-2 bg-gray-800 text-white rounded disabled:opacity-50"
+                    disabled={currentPage === totalPages}
+                >
+                    Next
+                </button>
             </div>
 
             {selectedAd && (
