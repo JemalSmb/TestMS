@@ -144,7 +144,7 @@ function NavBar(){
                         }
                     }}
                 >
-                    {activeForm === 'login' ? <LoginForm /> : <SignUpForm />}
+                    {activeForm === 'login' ? <SignUpForm /> : <LoginForm /> }
                 </ReactModal>
             )}
         </div>
