@@ -3,8 +3,6 @@ import React, { useState, useEffect } from "react";
 const AdHandler = () => {
     const [ads, setAds] = useState([]);
     const [selectedAd, setSelectedAd] = useState(null);
-    const [currentPage, setCurrentPage] = useState(1);
-    const adsPerPage = 9;
     const [timer, setTimer] = useState(5); // 5 seconds timer
 
     // Fetch ads when the component mounts
@@ -23,17 +21,6 @@ const AdHandler = () => {
         fetchAds();
     }, []);
 
-    // Calculate the ads to display on the current page
-    const indexOfLastAd = currentPage * adsPerPage;
-    const indexOfFirstAd = indexOfLastAd - adsPerPage;
-    const currentAds = ads.slice(indexOfFirstAd, indexOfLastAd);
-
-    // Handle page change
-    const handlePageChange = (pageNumber) => {
-        setCurrentPage(pageNumber);
-    };
-
-        
     // Handle ad click
     const handleAdClick = (ad) => {
         setSelectedAd(ad);
@@ -57,11 +44,11 @@ const AdHandler = () => {
     };
 
     return (
-        <div className="container w-11/12 min-h-screen m-auto relative ad-grid">
+        <div className="container w-11/12 min-h-screen m-auto relative">
             <div className="ads-container grid grid-cols-3 gap-4 md:gap-6 lg:gap-8 xl:gap-10">
-                {currentAds.map((ad, index) => (
+                {ads.map((ad, index) => (
                     <div
-                        className="ad-item relative h-96 border-5 shadow-md overflow-hidden cursor-pointer"
+                        className="ad relative h-96 border-5 shadow-md overflow-hidden cursor-pointer"
                         key={index}
                         onClick={() => handleAdClick(ad)}
                     >
@@ -77,17 +64,7 @@ const AdHandler = () => {
                     </div>
                 ))}
             </div>
-            <div className="pagination">
-                {Array.from({ length: Math.ceil(ads.length / adsPerPage) }, (_, index) => (
-                    <button
-                        key={index}
-                        onClick={() => handlePageChange(index + 1)}
-                        className={currentPage === index + 1 ? "active" : ""}
-                    >
-                        {index + 1}
-                    </button>
-                ))}
-            </div>   
+
             {selectedAd && (
                 <div className="popup-ads fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-80 flex items-center justify-center">
                     <div className="relative bg-white p-4 rounded-lg">
