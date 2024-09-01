@@ -44,16 +44,18 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    flex-wrap: wrap;
 }
 
 .pagination button {
-    margin: 0 5px;
+    margin: 5px;
     padding: 10px 15px;
     border: none;
     background-color: #007bff;
     color: white;
     cursor: pointer;
     border-radius: 5px;
+    flex: 0 1 auto;
 }
 
 .pagination button.active {
