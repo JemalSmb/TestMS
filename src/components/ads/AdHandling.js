@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react";
 const AdHandler = () => {
     const [ads, setAds] = useState([]);
     const [selectedAd, setSelectedAd] = useState(null);
-    const [timer, setTimer] = useState(5); // 5 seconds timer
+    const [timer, setTimer] = useState(5);
     const [currentPage, setCurrentPage] = useState(1);
-    const adsPerPage = 9; // Display 9 ads per page
+    const [adsPerPage, setAdsPerPage] = useState(9); // Default to 9 ads per page
 
     // Fetch ads when the component mounts
     useEffect(() => {
@@ -21,6 +21,24 @@ const AdHandler = () => {
         };
 
         fetchAds();
+    }, []);
+
+    // Adjust adsPerPage based on screen width
+    useEffect(() => {
+        const updateAdsPerPage = () => {
+            const width = window.innerWidth;
+            if (width >= 1000) {
+                setAdsPerPage(9); // 3x3 grid
+            } else if (width >= 600) {
+                setAdsPerPage(6); // 2x3 grid
+            } else {
+                setAdsPerPage(3); // 1x3 grid
+            }
+        };
+
+        updateAdsPerPage();
+        window.addEventListener("resize", updateAdsPerPage);
+        return () => window.removeEventListener("resize", updateAdsPerPage);
     }, []);
 
     // Handle ad click
