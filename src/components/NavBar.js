@@ -5,16 +5,22 @@ import logo from "../../public/Logo.png";
 import LoginForm from './Login/Login';
 import SignUpForm from './Signup/Signup';
 import { useNavigate } from "react-router-dom";
-import { Img } from 'react-image';
 
 function NavBar(){
 
     const navigate = useNavigate();
 
-    const [isAuthOpen, setIsAuthOpen] = useState(false);
     const [activeForm, setActiveForm] = useState(null);
     const [profileImage, setProfileImage] = useState(logo); // Default to local logo
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const openLoginForm = () => {
+        setActiveForm('login');
+    };
+
+    const openSignUpForm = () => {
+        setActiveForm('signup');
+    };
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -73,12 +79,12 @@ function NavBar(){
                             <a className="py-2 px-4 flex items-center w-full">Settings</a>
                         </li>
                         <li>
-                            <a onClick={() => toggleAuth('signup')}
+                            <a onClick={openSignUpForm}
                             className="py-2 px-4 transition-all duration-300 rounded-2xl w-full"
                             >Signup</a>
                         </li>
                         <li>
-                            <a onClick={() => toggleAuth('login')}
+                            <a onClick={openLoginForm}
                             className="py-2 px-4 transition-all duration-300 rounded-2xl w-full"
                             >Login</a>
                         </li>
@@ -99,9 +105,9 @@ function NavBar(){
                                 <li><a className="block px-4 py-2 text-lg text-gray-400"   
                                 onClick={() => { navigate('profile'); toggleMenu();}}>Profile</a></li>
                                 <li><a className="block px-4 py-2 text-lg text-gray-400"
-                                onClick={() => { toggleAuth('login'); toggleMenu();}}>Login</a></li>
+                                onClick={() => { openLoginForm(); toggleMenu();}}>Login</a></li>
                                 <li><a className="block px-4 py-2 text-lg text-gray-400"
-                                onClick={() => { toggleAuth('signup'); toggleMenu();}}>Signup</a></li>
+                                onClick={() => { openSignUpForm(); toggleMenu();}}>Signup</a></li>
                             </ul>
                         </div>
                     </div>
@@ -109,10 +115,10 @@ function NavBar(){
             </div>
 
             {/* Render authentication modal */}
-            {isAuthOpen && (
+            {activeForm && (
                 <ReactModal
-                    isOpen={isAuthOpen}
-                    onRequestClose={closeAuth}
+                    isOpen={!!activeForm}
+                    onRequestClose={() => setActiveForm(null)}
                     contentLabel="Authentication Modal"
                     overlayClassName="modal-overlay"
                     className="modal-content"
@@ -144,7 +150,7 @@ function NavBar(){
                         }
                     }}
                 >
-                    {activeForm === 'login' ? <SignUpForm /> : <LoginForm /> }
+                    {activeForm === 'login' ? <LoginForm /> : <SignUpForm />}
                 </ReactModal>
             )}
         </div>
