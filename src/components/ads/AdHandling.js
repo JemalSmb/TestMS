@@ -62,13 +62,25 @@ const AdHandler = () => {
         }
     };
 
+    // Determine the aspect ratio class
+    const getAspectRatioClass = (ad) => {
+        const { width, height } = ad;
+        const aspectRatio = width / height;
+
+        if (aspectRatio > 1) {
+            return "ad-horizontal"; // 16:9
+        } else {
+            return "ad-vertical"; // 9:16
+        }
+    };
+
     return (
         <div className="container pt-4 pb-4 w-11/12 min-h-screen m-auto flex flex-col">
             {/* Ads Display */}
             <div className="ads-container flex-grow grid gap-4 overflow-y-auto" style={{ gridTemplateColumns: `repeat(auto-fill, minmax(250px, 1fr))` }}>
                 {ads.map((ad, index) => (
                     <div
-                        className="ad relative border-5 shadow-md overflow-hidden cursor-pointer"
+                        className={`ad relative border-5 shadow-md overflow-hidden cursor-pointer ${getAspectRatioClass(ad)}`}
                         key={index}
                         onClick={() => handleAdClick(ad)}
                     >

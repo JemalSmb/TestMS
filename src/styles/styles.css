@@ -61,3 +61,39 @@ body {
         grid-template-columns: repeat(1, 1fr);
     }
 }
+
+/* For horizontal ads (16:9 aspect ratio) */
+.ad-horizontal {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    background-color: #000; /* Placeholder color */
+    overflow: hidden;
+}
+
+.ad-horizontal img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* For vertical ads (9:16 aspect ratio) */
+.ad-vertical {
+    position: relative;
+    width: 100%;
+    padding-bottom: 177.78%; /* 9:16 aspect ratio */
+    background-color: #000; /* Placeholder color */
+    overflow: hidden;
+}
+
+.ad-vertical img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
