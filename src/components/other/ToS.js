@@ -3,7 +3,7 @@ import React from 'react';
 const ToS = () => {
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-            <div className='px-36'>
+            <div className='px-36 min-h-screen'>
             Terms of Service for MetaSurfAI
 
             Last Updated: [Date]
