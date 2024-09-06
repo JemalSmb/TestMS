@@ -5,8 +5,12 @@ import DiscordIcon from '../../public/discord.svg';
 import TwitterIcon from '../../public/twitter.svg';
 import GithubIcon from '../../public/github.svg';
 import LinkedinIcon from '../../public/linkedin.svg';
+import { useNavigate } from "react-router-dom";
 
 const MetaFooter = () => {
+
+    const navigate = useNavigate();
+
     return (
         <footer className="bg-zinc-950 bg-opacity-85 w-full mt-auto">
             <div className="grid justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
@@ -21,7 +25,7 @@ const MetaFooter = () => {
                         <h2 className="text-xl font-semibold mb-2 text-white">About</h2>
                         <ul className="space-y-2">
                             <li>
-                                <a href="#" className="text-white">MetaSurfAi</a>
+                                <a href={navigate('about')} className="text-white">MetaSurfAi</a>
                             </li>
                             <li>
                                 <a href="#" className="text-white">Our Services</a>
@@ -43,10 +47,10 @@ const MetaFooter = () => {
                         <h2 className="text-xl font-semibold mb-2 text-white">Legal</h2>
                         <ul className="space-y-2">
                             <li>
-                                <a href="#" className="text-white">Privacy Policy</a>
+                                <a href={navigate('tos')} className="text-white">Privacy Policy</a>
                             </li>
                             <li>
-                                <a href="#" className="text-white">Terms & Conditions</a>
+                                <a href={navigate('privacy')} className="text-white">Terms & Conditions</a>
                             </li>
                         </ul>
                     </div>
