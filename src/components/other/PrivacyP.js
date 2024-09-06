@@ -3,7 +3,7 @@ import React from 'react';
 const PrivacyPolicy = () => {
     return(
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-            <div className='px-36 min-h-screen'>
+            <div className='px-36 py-8 max-w-4xl w-full overflow-y-auto'>
             <h1>Privacy Policy for MetaSurfAI</h1>
             <p>Last Updated: [Date]</p>
             <p>At MetaSurfAI ("we," "us," or "our"), we value the privacy of our users and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, share, and safeguard your personal information when you use our services, including our website, advertising platform, and any related tools (collectively, the "Services").</p>
