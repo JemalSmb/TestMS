@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { optimize } = require('webpack');
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 
@@ -75,5 +76,8 @@ module.exports = {
     ],
     performance: {
         maxAssetSize: 1024 * 1024, // Increase asset size limit to 1 MiB
+    },
+    optimization: {
+        runtimeChunk: "single",
     },
 };
