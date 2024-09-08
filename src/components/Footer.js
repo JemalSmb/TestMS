@@ -25,7 +25,7 @@ const MetaFooter = () => {
                         <h2 className="text-xl font-semibold mb-2 text-white">About</h2>
                         <ul className="space-y-2">
                             <li>
-                                <a href="#" onClick={() => navigate('about')} className="text-white">MetaSurfAi</a>
+                                <a href="" onClick={() => navigate('about')} className="text-white">MetaSurfAi</a>
                             </li>
                             <li>
                                 <a href="#" className="text-white">Our Services</a>
