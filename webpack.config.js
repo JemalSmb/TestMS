@@ -10,7 +10,8 @@ module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'index_bundle.js',
+        filename: '[name].[contenthash].js', // Use [name] and [contenthash] for unique filenames
+        clean: true
     },
     devServer: {
         port: 9000,
@@ -79,5 +80,8 @@ module.exports = {
     },
     optimization: {
         runtimeChunk: "single",
+        splitChunks: {
+            chunks: 'all',
+        },
     },
 };
