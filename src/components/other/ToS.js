@@ -2,9 +2,8 @@ import React from 'react';
 
 const ToS = () => {
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-            <div className='px-36 py-8 max-w-4xl w-full overflow-y-auto'>
-            Terms of Service for MetaSurfAI
+        <div className='tos-container px-36 py-8 max-w-4xl mx-auto'>
+            <h1 className='font-bold'>Terms of Service for MetaSurfAI</h1>
 
             Last Updated: [Date]
 
@@ -98,7 +97,6 @@ const ToS = () => {
             [Address]
             [Email Address]
             [Phone Number]
-        </div>
         </div>
     );
 };

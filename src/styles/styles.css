@@ -97,3 +97,8 @@ body {
     height: 100%;
     object-fit: cover;
 }
+
+.tos-container {
+    height: auto;
+    overflow-y: auto;
+  }

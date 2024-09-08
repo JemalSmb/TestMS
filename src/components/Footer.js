@@ -47,10 +47,10 @@ const MetaFooter = () => {
                         <h2 className="text-xl font-semibold mb-2 text-white">Legal</h2>
                         <ul className="space-y-2">
                             <li>
-                                <a href="#" onClick={() => navigate('privacy')} className="text-white">Privacy Policy</a>
+                                <a href="" onClick={() => navigate('privacy')} className="text-white">Privacy Policy</a>
                             </li>
                             <li>
-                                <a href="#" onClick={() => navigate('tos')} className="text-white">Terms & Conditions</a>
+                                <a href="" onClick={() => navigate('tos')} className="text-white">Terms & Conditions</a>
                             </li>
                         </ul>
                     </div>
