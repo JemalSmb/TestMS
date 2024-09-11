@@ -99,14 +99,14 @@ const AdHandler = () => {
 
             {selectedAd && (
                 <div className="popup-ads fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-80 flex items-center justify-center">
-                    <div className="relative bg-black bg-opacity-50 p-4 rounded-lg border-2 border-opacity-40 border-pink-600">
+                    <div className="relative bg-black bg-opacity-50 p-4 rounded-lg border-2 border-opacity-40 border-pink-600 max-w-screen-lg w-full h-full md:h-auto md:w-auto flex flex-col items-center justify-center">
                         <span onClick={closeModal} className="absolute top-2 right-2 text-3xl font-bold cursor-pointer">
                             &times;
                         </span>
                         <img
                             src={selectedAd.image_url}
                             alt={selectedAd.title}
-                            className="max-w-full max-h-80"
+                            className="object-contain max-w-full max-h-screen md:max-h-96 md:max-w-96"
                         />
                         <div className="mt-4">
                             <h3 className="text-lg font-bold">{selectedAd.title}</h3>
