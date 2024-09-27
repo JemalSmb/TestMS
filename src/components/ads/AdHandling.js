@@ -78,7 +78,7 @@ const AdHandler = () => {
     // Handle ad click
     const handleAdClick = (ad) => {
         setSelectedAd(ad);
-        setTimer(5); // Reset timer
+        setTimer(10); // Reset timer
         const countdown = setInterval(() => {
             setTimer((prevTimer) => {
                 if (prevTimer <= 1) {
