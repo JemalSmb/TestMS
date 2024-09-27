@@ -4,8 +4,9 @@ const AdHandler = () => {
     const [ads, setAds] = useState([]);
     const [selectedAd, setSelectedAd] = useState(null);
     const [timer, setTimer] = useState(10);
-    const [timeLeft, setTimeLeft] = useState(10); // Example timer set to 60 seconds
-    const [adsPerPage, setAdsPerPage] = useState(9); // Default to 9 ads per page
+    const [timeLeft, setTimeLeft] = useState(10);
+    const [adsPerPage, setAdsPerPage] = useState(9); // 9 ads
+    let countdown; 
 
     // Fetch ads when the component mounts
     useEffect(() => {
@@ -46,60 +47,53 @@ const AdHandler = () => {
         let timerInterval;
 
         const startTimer = () => {
-            if (!timerInterval) { // Start the timer only if it's not already running
-                timerInterval = setInterval(() => {
-                    setTimeLeft(prevTime => (prevTime > 0 ? prevTime - 1 : 0));
-                }, 1000);
-            }
-        };
-    
+            countdown = setInterval(() => {
+                setTimeLeft((prevTime) => {
+                    if (prevTime <= 1) {
+                        clearInterval(countdown); // Stop the timer once it reaches 0
+                        return 0;
+                    }
+                    return prevTime - 1;
+                });
+            }, 1000);
+            }});
+
         const stopTimer = () => {
-            if (timerInterval) {
-                clearInterval(timerInterval);
-                timerInterval = null; // Reset the interval ID
-            }
+            clearInterval(countdown); // Clear the timer
         };
-    
+
         const handleVisibilityChange = () => {
             if (document.hidden) {
-                stopTimer();
+                stopTimer(); // Stop timer if tab is not active
             } else {
-                startTimer();
+                startTimer(); // Resume timer when the tab becomes active
             }
         };
-    
-        // Listen to visibility change events
-        document.addEventListener('visibilitychange', handleVisibilityChange);
-    
-        // Start the timer initially when component mounts
-        startTimer();
-    
-        // Cleanup on unmount
-        return () => {
-            stopTimer();
-            document.removeEventListener('visibilitychange', handleVisibilityChange);
-        };
-    }, []);
 
-    // Handle ad click
-    const handleAdClick = (ad) => {
-        setSelectedAd(ad);
-        setTimer(10); // Reset timer
-        const countdown = setInterval(() => {
-            setTimer((prevTimer) => {
-                if (prevTimer <= 1) {
-                    clearInterval(countdown);
-                    return 0;
-                }
-                return prevTimer - 1;
-            });
-        }, 1000);
-    };
+        // Start the timer when the ad modal opens
+        startTimer();
+
+        // Attach the visibility change listener
+        document.addEventListener("visibilitychange", handleVisibilityChange);
+
+        // Cleanup when the modal is closed or the timer runs out
+        const cleanup = () => {
+            clearInterval(countdown);
+            document.removeEventListener("visibilitychange", handleVisibilityChange);
+        };
+
+        // Clear the timer and cleanup if the modal is closed
+        if (timer === 0) {
+            cleanup();
+        };
 
     // Close modal
     const closeModal = () => {
         if (timer === 0) {
             setSelectedAd(null);
+            // Cleanup when the modal is closed
+            clearInterval(countdown); // Ensure timer is cleared
+            document.removeEventListener("visibilitychange", handleVisibilityChange);
         }
     };
 
@@ -157,7 +151,7 @@ const AdHandler = () => {
                             <p className="text-sm">Token Reward: {selectedAd.token_reward}</p>
                         </div>
                         <div className="mt-4 text-center">
-                            <p className="text-sm">You can close this ad in {timer} seconds</p>
+                            <p className="text-sm">You can close this ad in {timeLeft} seconds</p>
                         </div>
                     </div>
                 </div>
