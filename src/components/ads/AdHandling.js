@@ -43,18 +43,23 @@ const AdHandler = () => {
 
     // Timer effect
     useEffect(() => {
-        let timer;
+        let timerInterval;
 
         const startTimer = () => {
-            timer = setInterval(() => {
-                setTimeLeft(prevTime => prevTime > 0 ? prevTime - 1 : 0);
-            }, 1000);
+            if (!timerInterval) { // Start the timer only if it's not already running
+                timerInterval = setInterval(() => {
+                    setTimeLeft(prevTime => (prevTime > 0 ? prevTime - 1 : 0));
+                }, 1000);
+            }
         };
-
+    
         const stopTimer = () => {
-            clearInterval(timer);
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null; // Reset the interval ID
+            }
         };
-
+    
         const handleVisibilityChange = () => {
             if (document.hidden) {
                 stopTimer();
@@ -62,18 +67,19 @@ const AdHandler = () => {
                 startTimer();
             }
         };
-
+    
+        // Listen to visibility change events
         document.addEventListener('visibilitychange', handleVisibilityChange);
-
-        // Start the timer initially
+    
+        // Start the timer initially when component mounts
         startTimer();
-
+    
+        // Cleanup on unmount
         return () => {
             stopTimer();
             document.removeEventListener('visibilitychange', handleVisibilityChange);
         };
     }, []);
-
 
     // Handle ad click
     const handleAdClick = (ad) => {
