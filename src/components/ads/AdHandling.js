@@ -5,8 +5,8 @@ const AdHandler = () => {
     const [selectedAd, setSelectedAd] = useState(null);
     const [timer, setTimer] = useState(10);
     const [timeLeft, setTimeLeft] = useState(10);
-    const [adsPerPage, setAdsPerPage] = useState(9); // 9 ads
-    let countdown; 
+    const [adsPerPage, setAdsPerPage] = useState(9);
+    let countdown;
 
     // Fetch ads when the component mounts
     useEffect(() => {
@@ -14,7 +14,7 @@ const AdHandler = () => {
             try {
                 const response = await fetch("https://metasurfai-public-api.fly.dev/v2");
                 const data = await response.json();
-                const sortedAds = data.sort((a, b) => b.token_reward - a.token_reward); // Sort by token_reward descending
+                const sortedAds = data.sort((a, b) => b.token_reward - a.token_reward); 
                 setAds(sortedAds);
             } catch (error) {
                 console.error("Error fetching ads:", error);
@@ -42,57 +42,56 @@ const AdHandler = () => {
         return () => window.removeEventListener("resize", updateAdsPerPage);
     }, []);
 
-    // Timer effect
-    useEffect(() => {
-        let timerInterval;
+    // Handle ad click
+    const handleAdClick = (ad) => {
+        setSelectedAd(ad);
+        setTimer(10); 
+        setTimeLeft(10);
 
         const startTimer = () => {
             countdown = setInterval(() => {
                 setTimeLeft((prevTime) => {
                     if (prevTime <= 1) {
-                        clearInterval(countdown); // Stop the timer once it reaches 0
+                        clearInterval(countdown);
                         return 0;
                     }
                     return prevTime - 1;
                 });
             }, 1000);
-            }});
+        };
 
         const stopTimer = () => {
-            clearInterval(countdown); // Clear the timer
+            clearInterval(countdown);
         };
 
         const handleVisibilityChange = () => {
             if (document.hidden) {
-                stopTimer(); // Stop timer if tab is not active
+                stopTimer();
             } else {
-                startTimer(); // Resume timer when the tab becomes active
+                startTimer();
             }
         };
 
-        // Start the timer when the ad modal opens
+
         startTimer();
 
-        // Attach the visibility change listener
         document.addEventListener("visibilitychange", handleVisibilityChange);
 
-        // Cleanup when the modal is closed or the timer runs out
         const cleanup = () => {
             clearInterval(countdown);
             document.removeEventListener("visibilitychange", handleVisibilityChange);
         };
 
-        // Clear the timer and cleanup if the modal is closed
         if (timer === 0) {
             cleanup();
-        };
+        }
+    };
 
     // Close modal
     const closeModal = () => {
         if (timer === 0) {
             setSelectedAd(null);
-            // Cleanup when the modal is closed
-            clearInterval(countdown); // Ensure timer is cleared
+            clearInterval(countdown);
             document.removeEventListener("visibilitychange", handleVisibilityChange);
         }
     };
@@ -134,15 +133,15 @@ const AdHandler = () => {
 
             {selectedAd && (
                 <div className="p-4 fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-80 flex items-center justify-center">
-                <div className="relative bg-black bg-opacity-50 p-4 rounded-lg border-2 border-opacity-40 border-pink-600 max-w-screen-lg w-full max-h-full md:max-h-[90vh] md:w-auto flex flex-col items-center justify-center overflow-y-auto">
-                    <span onClick={closeModal} className="absolute top-2 right-2 text-3xl font-bold cursor-pointer">
+                    <div className="relative bg-black bg-opacity-50 p-4 rounded-lg border-2 border-opacity-40 border-pink-600 max-w-screen-lg w-full max-h-full md:max-h-[90vh] md:w-auto flex flex-col items-center justify-center overflow-y-auto">
+                        <span onClick={closeModal} className="absolute top-2 right-2 text-3xl font-bold cursor-pointer">
                             &times;
                         </span>
                         <img
                             src={selectedAd.image_url}
                             alt={selectedAd.title}
                             className="object-contain max-w-full max-h-80 md:max-h-96"
-                            />
+                        />
                         <div className="mt-4">
                             <h3 className="text-lg font-bold">{selectedAd.title}</h3>
                             <p className="text-sm">Posted by: {selectedAd.posted_by}</p>
