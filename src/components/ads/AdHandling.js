@@ -77,7 +77,7 @@ const AdHandler = () => {
     return (
         <div className="container pt-4 pb-4 w-11/12 min-h-screen m-auto flex flex-col">
             {/* Ads Display */}
-            <div className="ads-container flex-grow grid gap-4 overflow-y-auto border-2" style={{ gridTemplateColumns: `repeat(auto-fill, minmax(250px, 1fr))` }}>
+            <div className="ads-container flex-grow grid gap-4 overflow-y-auto" style={{ gridTemplateColumns: `repeat(auto-fill, minmax(250px, 1fr))` }}>
                 {ads.map((ad, index) => (
                     <div
                         className={`ad relative border-5 shadow-md overflow-hidden cursor-pointer ${getAspectRatioClass(ad)}`}
@@ -85,7 +85,7 @@ const AdHandler = () => {
                         onClick={() => handleAdClick(ad)}
                     >
                         <img
-                            className="object-cover w-full h-full"
+                            className="object-cover w-full h-full rounded-lg"
                             src={ad.image_url}
                             alt={ad.title}
                         />
