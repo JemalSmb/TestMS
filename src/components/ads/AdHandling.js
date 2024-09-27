@@ -41,6 +41,40 @@ const AdHandler = () => {
         return () => window.removeEventListener("resize", updateAdsPerPage);
     }, []);
 
+    // Timer effect
+    useEffect(() => {
+        let timer;
+
+        const startTimer = () => {
+            timer = setInterval(() => {
+                setTimeLeft(prevTime => prevTime > 0 ? prevTime - 1 : 0);
+            }, 1000);
+        };
+
+        const stopTimer = () => {
+            clearInterval(timer);
+        };
+
+        const handleVisibilityChange = () => {
+            if (document.hidden) {
+                stopTimer();
+            } else {
+                startTimer();
+            }
+        };
+
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+
+        // Start the timer initially
+        startTimer();
+
+        return () => {
+            stopTimer();
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+        };
+    }, []);
+
+
     // Handle ad click
     const handleAdClick = (ad) => {
         setSelectedAd(ad);
