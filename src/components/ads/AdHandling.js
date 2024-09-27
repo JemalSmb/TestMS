@@ -89,9 +89,11 @@ const AdHandler = () => {
 
     // Close modal
     const closeModal = () => {
+        if (timeLeft === 0) {
             setSelectedAd(null);
             clearInterval(countdown);
             document.removeEventListener("visibilitychange", handleVisibilityChange);
+        }
     };
 
     // Determine the aspect ratio class
