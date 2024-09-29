@@ -44,7 +44,7 @@ function NavBar(){
     const Connect = { link: 'Connect', Path: '/Connect' };
 
     return (
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-base-100 opacity-50">
                 <div className="flex-1">
                     <a href="/" className="btn btn-ghost text-xl flex items-center space-x-3">
                         <img src={logo} alt="MetaSurf Logo" width={40} height={40} className='rounded-full'/>
