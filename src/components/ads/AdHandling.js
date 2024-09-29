@@ -72,7 +72,6 @@ const AdHandler = () => {
             }
         };
 
-
         startTimer();
 
         document.addEventListener("visibilitychange", handleVisibilityChange);
