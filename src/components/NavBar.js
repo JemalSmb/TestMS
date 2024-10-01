@@ -48,6 +48,7 @@ function NavBar(){
                 <div className="flex-1">
                     <a href="/" className="btn btn-ghost text-xl flex items-center space-x-3">
                         <img src={logo} alt="MetaSurf Logo" width={40} height={40} className='rounded-full'/>
+                        <span aclassName='text-black font-Oxanium text-2xl font-bold pt-2'>MetaSurfAi</span>
                     </a>
                 </div>
 
