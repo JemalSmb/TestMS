@@ -44,11 +44,10 @@ function NavBar(){
     const Connect = { link: 'Connect', Path: '/Connect' };
 
     return (
-            <div className="navbar bg-black">
+            <div className="navbar bg-transparent">
                 <div className="flex-1">
                     <a href="/" className="btn btn-ghost text-xl flex items-center space-x-3">
                         <img src={logo} alt="MetaSurf Logo" width={40} height={40} className='rounded-full'/>
-                        <span aclassName='text-white font-Oxanium text-2xl font-bold pt-2'>MetaSurfAi</span>
                     </a>
                 </div>
 
