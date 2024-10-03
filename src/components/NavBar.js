@@ -46,14 +46,14 @@ function NavBar(){
     return (
             <div className="navbar bg-transparent">
                 <div className="flex-1">
-                    <a href="/" className="btn btn-ghost text-xl flex items-center space-x-3">
+                    <a href="/" className="btn btn-ghost text-xl flex items-center space-x-2">
                         <img src={logo} alt="MetaSurf Logo" width={40} height={40} className='rounded-full'/>
                     </a>
                 </div>
 
                  {/* Search bar */}
                 <div className="flex items-center flex-grow lg:flex searchbar">
-                    <input type="text" placeholder="Search" className="bg-transparent outline-double outline-fuchsia-900 px-3 py-1 rounded-3xl" />
+                    <input type="text" placeholder="Search" className="bg-slate-400 outline outline-fuchsia-900 px-6 py-1 rounded-3xl" />
                 </div>
                 <a href="/" className='text-black font-Oxanium space-x-4 px-2 pt-2'>Explore</a>
                 <a href="/" className='text-black font-Oxanium space-x-4 px-2 pt-2'>Live</a>
