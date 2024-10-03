@@ -63,7 +63,7 @@ function NavBar(){
                         <button className='bg-fuchsia-600 text-white px-4 transition-all duration-300 rounded-2xl w-24 h-10 hover:bg-grey font-sans connect-button'>{Connect.link}</button>
                     </a>
                 </div>
-                <div className="flex-none dropdown-menu"> 
+                {/* <div className="flex-none dropdown-menu"> 
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
@@ -91,7 +91,7 @@ function NavBar(){
                         </li>
                     </ul>
                 </div>
-                </div>
+                </div> */}
             {/* Mobile menu */}
             <div className="mobile-menu relative">
                 <button className="btn-sm btn-active btn-neutral" onClick={toggleMenu}>Menu</button>
