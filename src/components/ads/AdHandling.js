@@ -108,6 +108,8 @@ const AdHandler = () => {
     };
 
     return (
+        <div>
+        <h1 className="text-black">We're offering the best</h1> <h1 className="text-pink-500">Services</h1>
         <div className="container pt-4 pb-4 w-11/12 min-h-screen m-auto flex flex-col">
             {/* Ads Display */}
             <div className="ads-container flex-grow grid gap-4 overflow-y-auto" style={{ gridTemplateColumns: `repeat(auto-fill, minmax(250px, 1fr))` }}>
@@ -155,6 +157,7 @@ const AdHandler = () => {
                 </div>
             )}
         </div>
+    </div>
     );
 };
 

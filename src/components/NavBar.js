@@ -53,7 +53,7 @@ function NavBar(){
 
                  {/* Search bar */}
                 <div className="flex items-center flex-grow lg:flex searchbar">
-                    <input type="text" placeholder="Search" className="bg-slate-400 outline outline-fuchsia-900 px-6 py-1 rounded-3xl" />
+                    <input type="text" placeholder="Search" className="text-black bg-slate-50 outline-fuchsia-900 px-6 py-1 rounded-3xl" />
                 </div>
                 <a href="/" className='text-black font-Oxanium space-x-4 px-2 pt-2'>Explore</a>
                 <a href="/" className='text-black font-Oxanium space-x-4 px-2 pt-2'>Live</a>
