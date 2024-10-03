@@ -55,8 +55,8 @@ function NavBar(){
                 <div className="flex items-center flex-grow lg:flex searchbar">
                     <input type="text" placeholder="Search" className="bg-transparent outline-double outline-fuchsia-900 px-3 py-1 rounded-3xl" />
                 </div>
-                <a href="/" className='text-black font-Oxanium px-10 space-x-4 pt-2'>Explore</a>
-                <a href="/" className='text-black font-Oxanium px-10 space-x-4 pt-2'>Live</a>
+                <a href="/" className='text-black font-Oxanium space-x-4 pt-2'>Explore</a>
+                <a href="/" className='text-black font-Oxanium space-x-4 pt-2'>Live</a>
                 <a href="/" className='text-black font-Oxanium px-10 space-x-4 pt-2'>Dashboard</a>
                 <div className='space-x-4 lg:flex px-10 items-center connect-button-container'>
                     <a href={Connect.Path}>
