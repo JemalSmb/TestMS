@@ -109,51 +109,53 @@ const AdHandler = () => {
 
     return (
         <div>
-        <h1 className="text-black">We're offering the best</h1> <h1 className="text-pink-500">Services</h1>
-        <div className="container pt-4 pb-4 w-11/12 min-h-screen m-auto flex flex-col">
-            {/* Ads Display */}
-            <div className="ads-container flex-grow grid gap-4 overflow-y-auto" style={{ gridTemplateColumns: `repeat(auto-fill, minmax(250px, 1fr))` }}>
-                {ads.map((ad, index) => (
-                    <div
-                        className={`ad relative rounded-xl border-5 border-y-cyan-500 shadow-md overflow-hidden cursor-pointer ${getAspectRatioClass(ad)}`}
-                        key={index}
-                        onClick={() => handleAdClick(ad)}
-                    >
-                        <img
-                            className="object-cover w-full h-full"
-                            src={ad.image_url}
-                            alt={ad.title}
-                        />
-                        <div className="ad-info absolute bottom-0 left-0 bg-black bg-opacity-50 text-white p-2">
-                            <h3 className="text-lg font-bold">{ad.title}</h3>
-                            <p className="text-sm">Token Reward: {ad.token_reward}</p>
+         <div>
+          <h className="text-black text-8xl font-bold">We're offering the best</h> <h className="text-8xl font-bold text-pink-500">Services</h>
+          </div>
+            <div className="container pt-4 pb-4 w-11/12 min-h-screen m-auto flex flex-col">
+                {/* Ads Display */}
+                <div className="ads-container flex-grow grid gap-4 overflow-y-auto" style={{ gridTemplateColumns: `repeat(auto-fill, minmax(250px, 1fr))` }}>
+                    {ads.map((ad, index) => (
+                        <div
+                            className={`ad relative rounded-xl border-5 border-y-cyan-500 shadow-md overflow-hidden cursor-pointer ${getAspectRatioClass(ad)}`}
+                            key={index}
+                            onClick={() => handleAdClick(ad)}
+                        >
+                            <img
+                                className="object-cover w-full h-full"
+                                src={ad.image_url}
+                                alt={ad.title}
+                            />
+                            <div className="ad-info absolute bottom-0 left-0 bg-black bg-opacity-50 text-white p-2">
+                                <h3 className="text-lg font-bold">{ad.title}</h3>
+                                <p className="text-sm">Token Reward: {ad.token_reward}</p>
+                            </div>
                         </div>
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
 
-            {selectedAd && (
-                <div className="p-4 fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-80 flex items-center justify-center">
-                    <div className="relative bg-black bg-opacity-50 p-4 rounded-lg border-2 border-opacity-40 border-pink-600 max-w-screen-lg w-full max-h-full md:max-h-[90vh] md:w-auto flex flex-col items-center justify-center overflow-y-auto">
-                        <span onClick={closeModal} className="absolute top-2 right-2 text-3xl font-bold cursor-pointer">
-                            &times;
-                        </span>
-                        <img
-                            src={selectedAd.image_url}
-                            alt={selectedAd.title}
-                            className="object-contain max-w-full max-h-80 md:max-h-96"
-                        />
-                        <div className="mt-4">
-                            <h3 className="text-lg font-bold">{selectedAd.title}</h3>
-                            <p className="text-sm">Posted by: {selectedAd.posted_by}</p>
-                            <p className="text-sm">Description: {selectedAd.description}</p>
-                            <p className="text-sm">Region: {selectedAd.region}</p>
-                            <p className="text-sm">Token Reward: {selectedAd.token_reward}</p>
-                        </div>
-                        <div className="mt-4 text-center">
-                            <p className="text-sm">You can close this ad in {timeLeft} seconds</p>
-                        </div>
-                    </div>
+                {selectedAd && (
+                    <div className="p-4 fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-80 flex items-center justify-center">
+                        <div className="relative bg-black bg-opacity-50 p-4 rounded-lg border-2 border-opacity-40 border-pink-600 max-w-screen-lg w-full max-h-full md:max-h-[90vh] md:w-auto flex flex-col items-center justify-center overflow-y-auto">
+                            <span onClick={closeModal} className="absolute top-2 right-2 text-3xl font-bold cursor-pointer">
+                                &times;
+                            </span>
+                            <img
+                                src={selectedAd.image_url}
+                                alt={selectedAd.title}
+                                className="object-contain max-w-full max-h-80 md:max-h-96"
+                            />
+                            <div className="mt-4">
+                                <h3 className="text-lg font-bold">{selectedAd.title}</h3>
+                                <p className="text-sm">Posted by: {selectedAd.posted_by}</p>
+                                <p className="text-sm">Description: {selectedAd.description}</p>
+                                <p className="text-sm">Region: {selectedAd.region}</p>
+                                <p className="text-sm">Token Reward: {selectedAd.token_reward}</p>
+                            </div>
+                            <div className="mt-4 text-center">
+                                <p className="text-sm">You can close this ad in {timeLeft} seconds</p>
+                            </div>
+                      </div>
                 </div>
             )}
         </div>
