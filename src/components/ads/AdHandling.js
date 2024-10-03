@@ -109,8 +109,8 @@ const AdHandler = () => {
 
     return (
         <div>
-         <div>
-          <h className="text-black text-8xl font-bold">We're offering the best</h> <h className="text-8xl font-bold text-pink-500">Services</h>
+         <div className="text-center">
+          <h className="text-black text-4xl font-bold">We're offering the best</h> <h className="text-4xl font-bold text-pink-500">Services</h>
           </div>
             <div className="container pt-4 pb-4 w-11/12 min-h-screen m-auto flex flex-col">
                 {/* Ads Display */}
