@@ -137,8 +137,10 @@ const AdHandler = () => {
                 </div>
             </div>
           </div>
-          <h className="text-black text-4xl pt-14 font-bold">Browse by interest</h> 
-          <h className="text-black text-2xl pl-0">See more</h> 
+          <div className="text-center">
+            <h className="text-black text-4xl pt-14 font-bold">Browse by interest</h> 
+            <h className="text-black text-xl pr-6">See more</h> 
+          </div>
             <div className="container pt-4 pb-4 w-11/12 min-h-screen m-auto flex flex-col">
                 {/* Ads Display */}
                 <div className="ads-container flex-grow grid gap-4 overflow-y-auto" style={{ gridTemplateColumns: `repeat(auto-fill, minmax(250px, 1fr))` }}>
