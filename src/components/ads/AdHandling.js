@@ -111,7 +111,7 @@ const AdHandler = () => {
 
     return (
         <div>
-         <div className="text-center pt-6">
+         <div className="text-center pt-6 justify-between">
           <h1 className="text-black text-4xl font-bold dark:text-white">We're offering the best</h1> <h1 className="text-4xl font-bold text-pink-500 dark:text-blue-600">Services</h1>
           <div>
           <h2 className="text-black dark:text-white text-4xl font-bold pt-6">Featured Videos</h2> 
@@ -136,7 +136,7 @@ const AdHandler = () => {
                 </div>
             </div>
           </div>
-          <div className="text-center">
+          <div className="text-center justify-between flex">
             <h3 className="text-black dark:text-white text-4xl pt-14 font-bold">Browse by interest</h3> 
             <h3 className="text-black dark:text-white text-xl pl-16">See more</h3> 
           </div>
