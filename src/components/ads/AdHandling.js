@@ -47,7 +47,7 @@ const AdHandler = () => {
         setTimer(10); 
         setTimeLeft(10);
 
-    useEffect(() => {
+
         let countdown;
 
         const startTimer = () => {
@@ -86,10 +86,6 @@ const AdHandler = () => {
         if (timer === 0) {
             cleanup();
         }
-        return () => {
-            cleanup();
-        };
-    }, [timeLeft]);
     };
 
     // Close modal
