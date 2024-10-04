@@ -68,7 +68,7 @@ function NavBar(){
                         <button className='bg-pink-600 dark:bg-blue-600 text-white px-4 transition-all duration-300 rounded-3xl w-24 h-10 hover:bg-grey font-sans connect-button'>{Connect.link}</button>
                     </a>
                 </div>
-                <button className='w-8 h-8 bg-pink-600 dark:bg-blue-600 rounded-full text-2xl text-white justify-center items-center' onClick={toggleDarkMode}>{DarkMode ? 'D' : 'L'}</button>
+                <button className='w-8 h-8 bg-pink-600 dark:bg-blue-600 rounded-full text-2xl text-white flex justify-center items-center' onClick={toggleDarkMode}>{DarkMode ? 'D' : 'L'}</button>
                 {/* <div className="flex-none dropdown-menu"> 
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
