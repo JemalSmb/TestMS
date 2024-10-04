@@ -138,7 +138,7 @@ const AdHandler = () => {
                 </div>
             </div>
           </div>
-          <div className="text-cente pt-8">
+          <div className="text-center pt-8">
             <h className="text-black dark:text-white text-4xl font-bold">Browse by interest</h> 
             <h className="text-black dark:text-white text-xl pl-16">See more</h> 
           </div>
