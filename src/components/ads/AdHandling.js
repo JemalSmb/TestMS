@@ -112,8 +112,8 @@ const AdHandler = () => {
          <div className="text-center pt-6">
           <h className="text-black text-4xl font-bold">We're offering the best</h> <h className="text-4xl font-bold text-pink-500">Services</h>
           <div>
-          <h className="text-black text-4xl pt-4 font-bold">Featured Videos</h> 
-          <div className="container pt-4 pb-4 w-11/12 min-h-screen m-auto flex flex-col ads-container pt-4 pb-4 w-11/12 min-h-screen m-auto" style={{ gridTemplateColumns: `repeat(auto-fill, minmax(250px, 1fr))` }}>
+          <h className="text-black text-4xl pt-14 font-bold">Featured Videos</h> 
+          <div className="container pt-4 pb-4 w-11/12 min-h-screen m-auto flex flex-col ads-container" style={{ gridTemplateColumns: `repeat(auto-fill, minmax(250px, 1fr))` }}>
           {ads.slice(0, 4).map((ad, index) => (
                         <div
                             className={`ad relative rounded-xl border-5 border-y-cyan-500 shadow-md overflow-hidden cursor-pointer ${getAspectRatioClass(ad)}`}
@@ -137,6 +137,8 @@ const AdHandler = () => {
                 </div>
             </div>
           </div>
+          <h className="text-black text-4xl pt-14 font-bold">Browse by interest</h> 
+          <h className="text-black text-2xl pl-0">See more</h> 
             <div className="container pt-4 pb-4 w-11/12 min-h-screen m-auto flex flex-col">
                 {/* Ads Display */}
                 <div className="ads-container flex-grow grid gap-4 overflow-y-auto" style={{ gridTemplateColumns: `repeat(auto-fill, minmax(250px, 1fr))` }}>
