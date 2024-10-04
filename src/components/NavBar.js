@@ -68,16 +68,16 @@ function NavBar(){
                 <div className="flex items-center flex-grow lg:flex searchbar">
                     <input type="text" placeholder="Search" className="text-black bg-slate-50 outline-fuchsia-900 px-6 py-1 rounded-3xl" />
                 </div>
-                <a href="/" className='text-black font-Oxanium space-x-4 px-2 pt-2'>Explore</a>
-                <a href="/" className='text-black font-Oxanium space-x-4 px-2 pt-2'>Live</a>
-                <a href="/" className='text-black font-Oxanium space-x-4 px-2 pt-2 pl-5'>Dashboard</a>
+                <a href="/" className='text-black dark:text-white font-Oxanium space-x-4 px-2 pt-2'>Explore</a>
+                <a href="/" className='text-black dark:text-white font-Oxanium space-x-4 px-2 pt-2'>Live</a>
+                <a href="/" className='text-black dark:text-white font-Oxanium space-x-4 px-2 pt-2 pl-5'>Dashboard</a>
                 <div className='space-x-4 lg:flex px-10 items-center connect-button-container'>
                     <a href={Connect.Path}>
                         <button className='bg-pink-600 dark:bg-blue-600 text-white px-4 transition-all duration-300 rounded-3xl w-24 h-10 hover:bg-grey font-sans connect-button'>{Connect.link}</button>
                     </a>
                 </div>
                 <button className='w-8 h-8 bg-pink-600 dark:bg-blue-600 rounded-full text-2xl text-white flex justify-center items-center' onClick={toggleDarkMode}>
-                    D
+                    {DarkMode ? '🌞' : '🌙'}
                     </button>
                 {/* <div className="flex-none dropdown-menu"> 
                     <div className="dropdown dropdown-end">
