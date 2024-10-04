@@ -114,7 +114,7 @@ const AdHandler = () => {
          <div className="text-center pt-6">
           <h className="text-black text-4xl font-bold dark:text-white">We're offering the best</h> <h className="text-4xl font-bold text-pink-500 dark:text-blue-600">Services</h>
           <div>
-          <h className="text-black dark:text-white text-4xlfont-bold py-6">Featured Videos</h> 
+          <h className="text-black dark:text-white text-4xl font-bold py-6">Featured Videos</h> 
           <div className="container pt-4 pb-4 w-11/12 min-h-screen m-auto flex flex-col ads-container" style={{ gridTemplateColumns: `repeat(auto-fill, minmax(250px, 1fr))` }}>
           {ads.slice(0, 4).map((ad, index) => (
                         <div
