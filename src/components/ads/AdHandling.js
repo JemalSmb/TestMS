@@ -110,7 +110,7 @@ const AdHandler = () => {
     return (
         <div>
          <div className="text-center pt-6">
-          <h className="text-black text-4xl font-bold">We're offering the best</h> <h className="text-4xl font-bold text-pink-500">Services</h>
+          <h className="text-black text-4xl font-bold dark:text-white">We're offering the best</h> <h className="text-4xl font-bold text-pink-500 dark:text-blue-600">Services</h>
           <div>
           <h className="text-black text-4xl pt-14 font-bold">Featured Videos</h> 
           <div className="container pt-4 pb-4 w-11/12 min-h-screen m-auto flex flex-col ads-container" style={{ gridTemplateColumns: `repeat(auto-fill, minmax(250px, 1fr))` }}>
@@ -125,9 +125,6 @@ const AdHandler = () => {
                                 src={ad.image_url}
                                 alt={ad.title}
                             />
-                            <div className="absolute rounded-3xl bg-white text-black">
-                                <p>{ad.timer}🕒</p>
-                            </div>
                             <div className="ad-info absolute bottom-0 left-0 bg-black bg-opacity-50 text-white p-2">
                                 <h3 className="text-lg font-bold">{ad.title}</h3>
                                 <p className="text-sm">Token Reward: {ad.token_reward}</p>
@@ -139,7 +136,7 @@ const AdHandler = () => {
           </div>
           <div className="text-center">
             <h className="text-black text-4xl pt-14 font-bold">Browse by interest</h> 
-            <h className="text-black text-xl pr-6">See more</h> 
+            <h className="text-black text-xl pl-16">See more</h> 
           </div>
             <div className="container pt-4 pb-4 w-11/12 min-h-screen m-auto flex flex-col">
                 {/* Ads Display */}

@@ -13,6 +13,11 @@ function NavBar(){
     const [activeForm, setActiveForm] = useState(null);
     const [profileImage, setProfileImage] = useState(logo); // Default to local logo
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [DarkMode, setDarkMode] = useState(false);
+
+    const toggleDarkMode = () => {
+        setDarkMode(!DarkMode);
+    }
 
     const openLoginForm = () => {
         setActiveForm('login');
@@ -44,7 +49,7 @@ function NavBar(){
     const Connect = { link: 'Connect', Path: '/Connect' };
 
     return (
-            <div className="navbar bg-transparent">
+            <div className="navbar bg-transparent" classnName={`${darkMode && 'Dark'}`}>
                 <div className="flex-1">
                     <a href="/" className="btn btn-ghost text-xl flex items-center space-x-2">
                         <img src={logo} alt="MetaSurf Logo" width={40} height={40} className='rounded-full'/>
@@ -60,9 +65,10 @@ function NavBar(){
                 <a href="/" className='text-black font-Oxanium space-x-4 px-2 pt-2 pl-5'>Dashboard</a>
                 <div className='space-x-4 lg:flex px-10 items-center connect-button-container'>
                     <a href={Connect.Path}>
-                        <button className='bg-pink-600 text-white px-4 transition-all duration-300 rounded-3xl w-24 h-10 hover:bg-grey font-sans connect-button'>{Connect.link}</button>
+                        <button className='bg-pink-600 dark:bg-blue-600 text-white px-4 transition-all duration-300 rounded-3xl w-24 h-10 hover:bg-grey font-sans connect-button'>{Connect.link}</button>
                     </a>
                 </div>
+                <button className='w-16 h-16 bg-pink-600 dark:bg-blue-600 rounded-full' onClick={toggleDarkMode}>{DarkMode ? 'D' : 'L'}</button>
                 {/* <div className="flex-none dropdown-menu"> 
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
