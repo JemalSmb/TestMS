@@ -6,10 +6,6 @@ body {
     background-color: rgb(255, 255, 255);
 }
 
-.dark body {
-    background-color: rgb(18, 18, 18); /* Dark mode background color */
-}
-
 @media (max-width: 900px) {
     .searchbar {
         display: none; /* Hide search bar on smaller screens */
