@@ -6,7 +6,6 @@ const AdHandler = () => {
     const [timer, setTimer] = useState(10);
     const [timeLeft, setTimeLeft] = useState(10);
     const [adsPerPage, setAdsPerPage] = useState(9);
-    let countdown;
 
     // Fetch ads when the component mounts
     useEffect(() => {
@@ -48,6 +47,9 @@ const AdHandler = () => {
         setTimer(10); 
         setTimeLeft(10);
 
+    useEffect(() => {
+        let countdown;
+
         const startTimer = () => {
             countdown = setInterval(() => {
                 setTimeLeft((prevTime) => {
@@ -84,6 +86,10 @@ const AdHandler = () => {
         if (timer === 0) {
             cleanup();
         }
+        return () => {
+            cleanup();
+        };
+    }, [timeLeft]);
     };
 
     // Close modal
