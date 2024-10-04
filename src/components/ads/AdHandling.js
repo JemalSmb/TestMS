@@ -111,11 +111,31 @@ const AdHandler = () => {
         <div>
          <div className="text-center pt-6">
           <h className="text-black text-4xl font-bold">We're offering the best</h> <h className="text-4xl font-bold text-pink-500">Services</h>
+          <div>
+          <h className="text-black text-4xl pt-4 font-bold">Featured Videos</h> 
+          {ads.map((ad, index) => (
+                        <div
+                            className={`ad relative rounded-xl border-5 border-y-cyan-500 shadow-md overflow-hidden cursor-pointer ${getAspectRatioClass(ad)}`}
+                            key={index}
+                            onClick={() => handleAdClick(ad)}
+                        >
+                            <img
+                                className="object-cover w-full h-full"
+                                src={ad.image_url}
+                                alt={ad.title}
+                            />
+                            <div className="ad-info absolute bottom-0 left-0 bg-black bg-opacity-50 text-white p-2">
+                                <h3 className="text-lg font-bold">{ad.title}</h3>
+                                <p className="text-sm">Token Reward: {ad.token_reward}</p>
+                            </div>
+                        </div>
+                    ))}
+          </div>
           </div>
             <div className="container pt-4 pb-4 w-11/12 min-h-screen m-auto flex flex-col">
                 {/* Ads Display */}
                 <div className="ads-container flex-grow grid gap-4 overflow-y-auto" style={{ gridTemplateColumns: `repeat(auto-fill, minmax(250px, 1fr))` }}>
-                    {ads.map((ad, index) => (
+                    {ads.slice(0, 4).map((ad, index) => (
                         <div
                             className={`ad relative rounded-xl border-5 border-y-cyan-500 shadow-md overflow-hidden cursor-pointer ${getAspectRatioClass(ad)}`}
                             key={index}

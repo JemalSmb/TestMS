@@ -60,7 +60,7 @@ function NavBar(){
                 <a href="/" className='text-black font-Oxanium space-x-4 px-2 pt-2 pl-5'>Dashboard</a>
                 <div className='space-x-4 lg:flex px-10 items-center connect-button-container'>
                     <a href={Connect.Path}>
-                        <button className='bg-pink-500 text-white px-4 transition-all duration-300 rounded-3xl w-24 h-10 hover:bg-grey font-sans connect-button'>{Connect.link}</button>
+                        <button className='bg-pink-600 text-white px-4 transition-all duration-300 rounded-3xl w-24 h-10 hover:bg-grey font-sans connect-button'>{Connect.link}</button>
                     </a>
                 </div>
                 {/* <div className="flex-none dropdown-menu"> 
