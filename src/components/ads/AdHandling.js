@@ -124,6 +124,9 @@ const AdHandler = () => {
                                 src={ad.image_url}
                                 alt={ad.title}
                             />
+                            <div className="absolute rounded-3xl bg-white text-black">
+                                <p>{ad.timer}🕒</p>
+                            </div>
                             <div className="ad-info absolute bottom-0 left-0 bg-black bg-opacity-50 text-white p-2">
                                 <h3 className="text-lg font-bold">{ad.title}</h3>
                                 <p className="text-sm">Token Reward: {ad.token_reward}</p>
@@ -146,6 +149,9 @@ const AdHandler = () => {
                                 src={ad.image_url}
                                 alt={ad.title}
                             />
+                            <div className="absolute rounded-3xl bg-white text-black">
+                                <p>{ad.timer}🕒</p>
+                            </div>
                             <div className="ad-info absolute bottom-0 left-0 bg-black bg-opacity-50 text-white p-2">
                                 <h3 className="text-lg font-bold">{ad.title}</h3>
                                 <p className="text-sm">Token Reward: {ad.token_reward}</p>
