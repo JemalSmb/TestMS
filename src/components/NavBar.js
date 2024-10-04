@@ -49,7 +49,7 @@ function NavBar(){
     const Connect = { link: 'Connect', Path: '/Connect' };
 
     return (
-            <div className="navbar bg-transparent" classnName={`${darkMode && 'Dark'}`}>
+            <div className="navbar bg-transparent" classnName={`${DarkMode && 'Dark'}`}>
                 <div className="flex-1">
                     <a href="/" className="btn btn-ghost text-xl flex items-center space-x-2">
                         <img src={logo} alt="MetaSurf Logo" width={40} height={40} className='rounded-full'/>
