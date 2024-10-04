@@ -114,7 +114,7 @@ const AdHandler = () => {
          <div className="text-center pt-6">
           <h className="text-black text-4xl font-bold dark:text-white">We're offering the best</h> <h className="text-4xl font-bold text-pink-500 dark:text-blue-600">Services</h>
           <div>
-          <div className=' pt-6'>
+          <div className=' pt-10'>
           <h className="text-black dark:text-white text-4xl font-bold">Featured Videos</h> 
           </div>
           <div className="container pt-4 pb-4 w-11/12 min-h-screen m-auto flex flex-col ads-container" style={{ gridTemplateColumns: `repeat(auto-fill, minmax(250px, 1fr))` }}>
@@ -138,8 +138,8 @@ const AdHandler = () => {
                 </div>
             </div>
           </div>
-          <div className="text-center">
-            <h className="text-black dark:text-white text-4xl pt-14 font-bold">Browse by interest</h> 
+          <div className="text-cente pt-8">
+            <h className="text-black dark:text-white text-4xl font-bold">Browse by interest</h> 
             <h className="text-black dark:text-white text-xl pl-16">See more</h> 
           </div>
             <div className="container pt-4 pb-4 w-11/12 min-h-screen m-auto flex flex-col">
