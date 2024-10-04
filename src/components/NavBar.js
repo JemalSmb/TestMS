@@ -16,12 +16,12 @@ function NavBar(){
     const [DarkMode, setDarkMode] = useState(false);
 
     useEffect(() => {
-        if (darkMode) {
+        if (DarkMode) {
             document.documentElement.classList.add('dark');
         } else {
             document.documentElement.classList.remove('dark');
         }
-    }, [darkMode]);
+    }, [DarkMode]);
 
     const toggleDarkMode = () => {
         setDarkMode(!DarkMode);
