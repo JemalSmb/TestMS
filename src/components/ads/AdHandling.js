@@ -114,7 +114,7 @@ const AdHandler = () => {
           <div>
           <h className="text-black text-4xl pt-4 font-bold">Featured Videos</h> 
           <div className="ads-container flex-grow grid gap-4 overflow-y-auto" style={{ gridTemplateColumns: `repeat(auto-fill, minmax(250px, 1fr))` }}>
-          {ads.map((ad, index) => (
+          {ads.slice(0, 4).map((ad, index) => (
                         <div
                             className={`ad relative rounded-xl border-5 border-y-cyan-500 shadow-md overflow-hidden cursor-pointer ${getAspectRatioClass(ad)}`}
                             key={index}
@@ -140,7 +140,7 @@ const AdHandler = () => {
             <div className="container pt-4 pb-4 w-11/12 min-h-screen m-auto flex flex-col">
                 {/* Ads Display */}
                 <div className="ads-container flex-grow grid gap-4 overflow-y-auto" style={{ gridTemplateColumns: `repeat(auto-fill, minmax(250px, 1fr))` }}>
-                    {ads.slice(0, 4).map((ad, index) => (
+                    {ads.map((ad, index) => (
                         <div
                             className={`ad relative rounded-xl border-5 border-y-cyan-500 shadow-md overflow-hidden cursor-pointer ${getAspectRatioClass(ad)}`}
                             key={index}
