@@ -62,30 +62,34 @@ const UserDash = () => {
   };
 
   return (
-    <div>
-      <h1 className='text-black dark:text-white'>User Dashboard</h1>
-      <section>
-        <h2 className='text-black dark:text-white'>Tokens: {tokens}</h2>
+    <div className="container mx-auto p-4">
+      <h1 className="text-3xl font-bold mb-4 text-center text-black dark:text-white">User Dashboard</h1>
+      <section className="mb-8 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+        <h2 className="text-2xl font-semibold mb-2 text-black dark:text-white">Tokens</h2>
+        <p className="text-xl text-black dark:text-white">{tokens}</p>
       </section>
-      <section>
-        <h2 className='text-black dark:text-white'>Profile</h2>
-        <p className='text-black dark:text-white'>Name: {profile.username}</p>
-        <p className='text-black dark:text-white'>Email: {profile.email}</p>
-        <p className='text-black dark:text-white'>Region: {profile.region}</p>
-        <p className='text-black dark:text-white'>Country: {profile.country}</p>
+      <section className="mb-8 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+        <h2 className="text-2xl font-semibold mb-2 text-black dark:text-white">Profile</h2>
+        <p className="text-lg text-black dark:text-white">Name: {profile.username}</p>
+        <p className="text-lg text-black dark:text-white">Email: {profile.email}</p>
+        <p className="text-lg text-black dark:text-white">Region: {profile.region}</p>
+        <p className="text-lg text-black dark:text-white">Country: {profile.country}</p>
       </section>
-      <section>
-        <h2 className='text-black dark:text-white'>Manage Ads</h2>
-        <ul>
+      <section className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+        <h2 className="text-2xl font-semibold mb-2 text-black dark:text-white">Manage Ads</h2>
+        <ul className="mb-4">
           {ads.map(ad => (
-            <li key={ad.id}>
-              {ad.title} <button onClick={() => handleDeleteAd(ad.id)} className='text-black dark:text-white'>Delete</button>
+            <li key={ad.id} className="flex justify-between items-center mb-2 p-2 bg-gray-100 dark:bg-gray-700 rounded">
+              <span className="text-black dark:text-white">{ad.title}</span>
+              <button onClick={() => handleDeleteAd(ad.id)} className="text-red-500 dark:text-red-400">Delete</button>
             </li>
           ))}
         </ul>
-        <button onClick={() => handlePostAd("New Ad")} className='text-black dark:text-white'>Post New Ad</button>
-        <input type="file" onChange={handleFileChange} className='text-black dark:text-white' />
-        <button onClick={handleUploadAd} className='text-black dark:text-white'>Upload Ad</button>    
+        <div className="flex items-center mb-4">
+          <button onClick={() => handlePostAd("New Ad")} className="mr-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Post New Ad</button>
+          <input type="file" onChange={handleFileChange} className="mr-4 text-black dark:text-white" />
+          <button onClick={handleUploadAd} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Upload Ad</button>
+        </div>
       </section>
     </div>
   );
