@@ -1,15 +1,32 @@
 import React, { useState, useEffect } from "react";
-
+import qs from "qs";
 // API endpoints
 const PROFILE_API = "https://metasurfai-public-api.fly.dev/v1/profile?username=nayem";
 const CREATE_AD_API = "https://metasurfai-public-api.fly.dev/v2/createOneAds";
 const DELETE_AD_API = "https://metasurfai-public-api.fly.dev/v2/deleteOneAds";
 
 const UserDash = () => {
-  const [tokens, setTokens] = useState(0);
+  const [title, setTitle] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [viewCount, setViewCount] = useState(0);
+  const [description, setDescription] = useState("");
+  const [postedBy, setPostedBy] = useState("");
+  const [active, setActive] = useState(true);
+  const [maxViews, setMaxViews] = useState(0);
+  const [region, setRegion] = useState("");
+  const [tokenReward, setTokenReward] = useState(0);
   const [profile, setProfile] = useState({});
   const [ads, setAds] = useState([]);
   const [file, setFile] = useState(null);
+
+  const ad = {
+      title,
+      image_url: imageUrl,
+      description,
+      posted_by: postedBy,
+      region,
+      token_reward: tokenReward
+    };
 
   useEffect(() => {
     const getUserData = async () => {
@@ -87,8 +104,19 @@ const UserDash = () => {
         </ul>
         <div className="flex items-center mb-4">
           <button onClick={() => handlePostAd("New Ad")} className="mr-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Post New Ad</button>
-          <input type="file" onChange={handleFileChange} className="mr-4 text-black dark:text-white" />
-          <button onClick={handleUploadAd} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Upload Ad</button>
+          <form onSubmit={postAd}>
+        <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
+        <input type="text" placeholder="Image URL" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} required />
+        <input type="number" placeholder="View Count" value={viewCount} onChange={(e) => setViewCount(Number(e.target.value))} required />
+        <input type="text" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} required />
+        <input type="text" placeholder="Posted By" value={postedBy} onChange={(e) => setPostedBy(e.target.value)} required />
+        <input type="checkbox" checked={active} onChange={(e) => setActive(e.target.checked)} /> Active
+        <input type="number" placeholder="Max Views" value={maxViews} onChange={(e) => setMaxViews(Number(e.target.value))} required />
+        <input type="text" placeholder="Region" value={region} onChange={(e) => setRegion(e.target.value)} required />
+        <input type="number" placeholder="Token Reward" value={tokenReward} onChange={(e) => setTokenReward(Number(e.target.value))} required />
+        <input type="file" onChange={handleFileChange} className="mr-4 text-black dark:text-white" />
+          <button onClick={handleUploadAd} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Post Ad</button>
+          </form>
         </div>
       </section>
     </div>
