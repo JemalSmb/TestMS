@@ -144,15 +144,15 @@ const UserDash = () => {
         </ul>
         <div className="flex items-center mb-4">
         <form onSubmit={handlePostAd}>
-        <input type="text" className='text-black dark:text-white' placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
-        <input type="text" className='text-black dark:text-white' placeholder="Image URL" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} required />
-        <input type="text" className='text-black dark:text-white' placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} required />
-        <input type="text"  className='text-black dark:text-white' placeholder="Posted By" value={postedBy} onChange={(e) => setPostedBy(e.target.value)} required />
-        <input type="number" className='text-black dark:text-white' placeholder="Max Views" value={maxViews} onChange={(e) => setMaxViews(Number(e.target.value))} required />
-        <input type="text"  className='text-black dark:text-white' placeholder="Region" value={region} onChange={(e) => setRegion(e.target.value)} required />
-        <input type="number" className='text-black dark:text-white' placeholder="Token Reward" value={tokenReward} onChange={(e) => setTokenReward(Number(e.target.value))} required />
+        <input type="text" className='bg-transparent text-black dark:text-white' placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
+        <input type="text" className='bg-transparent text-black dark:text-white' placeholder="Image URL" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} required />
+        <input type="text" className='bg-transparent text-black dark:text-white' placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} required />
+        <input type="text"  className='bg-transparent text-black dark:text-white' placeholder="Posted By" value={postedBy} onChange={(e) => setPostedBy(e.target.value)} required />
+        <input type="number" className='bg-transparent text-black dark:text-white' placeholder="Max Views" value={maxViews} onChange={(e) => setMaxViews(Number(e.target.value))} required />
+        <input type="text"  className='bg-transparent text-black dark:text-white' placeholder="Region" value={region} onChange={(e) => setRegion(e.target.value)} required />
+        <input type="number" className='bg-transparent text-black dark:text-white' placeholder="Token Reward" value={tokenReward} onChange={(e) => setTokenReward(Number(e.target.value))} required />
         <input type="file" onChange={handleFileChange} className="mr-4 text-black dark:text-white" />
-        <button type="submit" className='bg-pink-600 dark:bg-blue-600 text-white rounded-2xl'>Post Ad</button>
+        <button type="submit" className='bg-pink-600 dark:bg-blue-600 text-white rounded-2xl px-4'>Post Ad</button>
         </form>
         </div>
       </section>
