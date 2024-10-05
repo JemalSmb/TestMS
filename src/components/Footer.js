@@ -4,7 +4,7 @@ import DiscordIcon from '../../public/discord.svg';
 import TwitterIcon from '../../public/twitter.svg';
 import GithubIcon from '../../public/github.svg';
 import LinkedinIcon from '../../public/linkedin.svg';
-import { useNavigate, useEffect } from "react-router-dom";
+import { useNavigate, useEffect, useState } from "react-router-dom";
 
 const MetaFooter = () => {
 
