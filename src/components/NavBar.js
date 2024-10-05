@@ -70,7 +70,7 @@ function NavBar(){
                 </div>
                 <a href="/" className='text-black dark:text-white font-Oxanium space-x-4 px-2 pt-2'>Explore</a>
                 <a href="/" className='text-black dark:text-white font-Oxanium space-x-4 px-2 pt-2'>Live</a>
-                <a href="/" className='text-black dark:text-white font-Oxanium space-x-4 px-2 pt-2 pl-5' onClick={() => navigate('Dashboad')}>Dashboard</a>
+                <a href="" className='text-black dark:text-white font-Oxanium space-x-4 px-2 pt-2 pl-5' onClick={() => navigate('Dashboad')}>Dashboard</a>
                 <div className='space-x-4 lg:flex px-10 items-center connect-button-container'>
                     <a href={Connect.Path}>
                         <button className='bg-pink-600 dark:bg-blue-600 text-white px-4 transition-all duration-300 rounded-3xl w-24 h-10 hover:bg-grey font-sans connect-button'>{Connect.link}</button>
