@@ -57,6 +57,10 @@ const UserDash = () => {
     }
   };
 
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0]);
+  };
+
   return (
     <div>
       <h1 className='text-black dark:text-white'>User Dashboard</h1>
@@ -72,13 +76,13 @@ const UserDash = () => {
       </section>
       <section>
         <h2 className='text-black dark:text-white'>Manage Ads</h2>
-        {/* <ul>
+        <ul>
           {ads.map(ad => (
             <li key={ad.id}>
               {ad.title} <button onClick={() => handleDeleteAd(ad.id)} className='text-black dark:text-white'>Delete</button>
             </li>
           ))}
-        </ul> */}
+        </ul>
         <button onClick={() => handlePostAd("New Ad")} className='text-black dark:text-white'>Post New Ad</button>
         <input type="file" onChange={handleFileChange} className='text-black dark:text-white' />
         <button onClick={handleUploadAd} className='text-black dark:text-white'>Upload Ad</button>    
