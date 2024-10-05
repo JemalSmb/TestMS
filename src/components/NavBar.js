@@ -63,6 +63,7 @@ function NavBar(){
                     <a href="/" className="btn btn-ghost text-xl flex items-center space-x-2">
                         <img src={DarkMode ? DarkLogo : logo} alt="MetaSurf Logo" width={40} height={40} className='rounded-full'/>
                     </a>
+                    {console.log('Image src:', DarkMode ? DarkLogo : logo)}
                 </div>
 
                  {/* Search bar */}
