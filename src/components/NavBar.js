@@ -17,6 +17,7 @@ function NavBar(){
     const [DarkMode, setDarkMode] = useState(false);
 
     useEffect(() => {
+        console.log("DarkMode:", DarkMode, "Logo:", DarkMode ? DarkLogo : logo);
         if (DarkMode) {
             document.documentElement.classList.add('dark');
         } else {
@@ -56,7 +57,6 @@ function NavBar(){
     ];
 
     const Connect = { link: 'Connect', Path: '/Connect' };
-    console.log("DarkMode:", DarkMode, "Logo:", DarkMode ? DarkLogo : logo);
 
     return (
             <div className="navbar bg-transparent" classnName={`${DarkMode && 'Dark'}`}>
