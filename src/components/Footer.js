@@ -4,11 +4,20 @@ import DiscordIcon from '../../public/discord.svg';
 import TwitterIcon from '../../public/twitter.svg';
 import GithubIcon from '../../public/github.svg';
 import LinkedinIcon from '../../public/linkedin.svg';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useEffect } from "react-router-dom";
 
 const MetaFooter = () => {
 
     const navigate = useNavigate();
+    const [DarkMode, setDarkMode] = useState(false);
+
+    useEffect(() => {
+        if (DarkMode) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }, [DarkMode]);
 
     return (
         <footer className="bg-pink-600 dark:bg-blue-600 bg-opacity-85 w-full mt-auto">
