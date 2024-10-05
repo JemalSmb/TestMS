@@ -6,26 +6,13 @@ import LoginForm from './Login/Login';
 import SignUpForm from './Signup/Signup';
 import { useNavigate } from "react-router-dom";
 
-function NavBar(){
+const NavBar = ({ DarkMode, toggleDarkMode }) => {
 
     const navigate = useNavigate();
 
     const [activeForm, setActiveForm] = useState(null);
     const [profileImage, setProfileImage] = useState(logo); // Default to local logo
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [DarkMode, setDarkMode] = useState(false);
-
-    useEffect(() => {
-        if (DarkMode) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    }, [DarkMode]);
-
-    const toggleDarkMode = () => {
-        setDarkMode(!DarkMode);
-    }
 
     const openLoginForm = () => {
         setActiveForm('login');

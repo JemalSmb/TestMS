@@ -10,9 +10,24 @@ import About from "./components/other/About";
 import UserDash from "./components/Dashboard/UserDash";
 
 const App = () => {
+  const [DarkMode, setDarkMode] = useState(false);
+  useEffect(() => {
+    if (DarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [DarkMode]);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!DarkMode);
+  }
+
+
+
   return (
-      <div className="flex flex-col min-h-screen bg-white dark:bg-slate-700">
-        <NavBar />
+      <div className={`flex flex-col min-h-screen bg-white dark:bg-slate-700 ${DarkMode ? 'dark' : ''}`}>
+        <NavBar DarkMode={DarkMode} toggleDarkMode={toggleDarkMode} />
         <main className="flex-grow">
           <Routes>
           <Route path="/" element={<AdHandler />} />
@@ -23,7 +38,7 @@ const App = () => {
           <Route path="/Dashboard" element={<UserDash />} />
           </Routes>
         </main>
-        <Footer />
+        <Footer DarkMode={DarkMode} />
       </div>
   );
 };

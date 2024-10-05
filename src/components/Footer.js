@@ -6,16 +6,15 @@ import GithubIcon from '../../public/github.svg';
 import LinkedinIcon from '../../public/linkedin.svg';
 import { useNavigate} from "react-router-dom";
 
-function MetaFooter() {
+const Footer = ({ DarkMode }) => {
 
     const navigate = useNavigate();
-
     return (
         <footer className="bg-pink-600 dark:bg-blue-600 bg-opacity-85 w-full mt-auto">
             <div className="grid justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
                 <div className="space-y-4 mb-8">
                     <a href="/" className="text-2xl font-semibold flex items-center space-x-3">
-                        <Img   src={'/Logo.png'}  alt="MetaSurfAi Logo" width={32} height={32} className="object-scale-down h-8 w-8 inline-block rounded-full" />
+                        <Img  src={DarkMode ? '/DarkLogo' : '/LightLogo'} alt="MetaSurfAi Logo" width={32} height={32} className="object-scale-down h-8 w-8 inline-block rounded-full" />
                         <span className="text-white font-Oxanium text-2xl font-bold pt-2">MetaSurfAi</span>
                     </a>
                 </div>
@@ -79,6 +78,6 @@ function MetaFooter() {
     );
 };
 
-export default MetaFooter;
+export default Footer;
 
 
