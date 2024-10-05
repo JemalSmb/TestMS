@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import React from 'react';
 import ReactModal from 'react-modal';
 import logo from "../../public/Logo.png";

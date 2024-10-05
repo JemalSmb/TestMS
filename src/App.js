@@ -2,7 +2,7 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import AdHandler from "./components/ads/AdHandling";
 import Profile from "./components/profile/profile";
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import ToS from "./components/other/ToS";
 import PrivacyPolicy from "./components/other/PrivacyP";
