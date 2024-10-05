@@ -9,6 +9,7 @@ const UserDash = () => {
   const [tokens, setTokens] = useState(0);
   const [profile, setProfile] = useState({});
   const [ads, setAds] = useState([]);
+  const [file, setFile] = useState(null);
 
   useEffect(() => {
     const getUserData = async () => {
@@ -45,30 +46,42 @@ const UserDash = () => {
     setAds(ads.filter(ad => ad.id !== adId));
   };
 
+  const handleUploadAd = async () => {
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        const content = e.target.result;
+        await handlePostAd(content);
+      };
+      reader.readAsText(file);
+    }
+  };
+
   return (
     <div>
-      <h1>User Dashboard</h1>
+      <h1 className='text-black dark:text-white'>User Dashboard</h1>
       <section>
-        <h2>Tokens: {tokens}</h2>
+        <h2 className='text-black dark:text-white'>Tokens: {tokens}</h2>
       </section>
       <section>
-        <h2>Profile</h2>
-        <p>Name: {profile.username}</p>
-        <p>Email: {profile.email}</p>
-        <p>Region: {profile.region}</p>
-        <p>Country: {profile.country}</p>
-        <p>Safe Browse: {profile.safebrowse ? "Enabled" : "Disabled"}</p>
+        <h2 className='text-black dark:text-white'>Profile</h2>
+        <p className='text-black dark:text-white'>Name: {profile.username}</p>
+        <p className='text-black dark:text-white'>Email: {profile.email}</p>
+        <p className='text-black dark:text-white'>Region: {profile.region}</p>
+        <p className='text-black dark:text-white'>Country: {profile.country}</p>
       </section>
       <section>
-        <h2>Manage Ads</h2>
+        <h2 className='text-black dark:text-white'>Manage Ads</h2>
         <ul>
           {ads.map(ad => (
             <li key={ad.id}>
-              {ad.title} <button onClick={() => handleDeleteAd(ad.id)}>Delete</button>
+              {ad.title} <button onClick={() => handleDeleteAd(ad.id)} className='text-black dark:text-white'>Delete</button>
             </li>
           ))}
         </ul>
-        <button onClick={() => handlePostAd("New Ad")}>Post New Ad</button>
+        <button onClick={() => handlePostAd("New Ad")} className='text-black dark:text-white'>Post New Ad</button>
+        <input type="file" onChange={handleFileChange} className='text-black dark:text-white' />
+        <button onClick={handleUploadAd} className='text-black dark:text-white'>Upload Ad</button>    
       </section>
     </div>
   );
