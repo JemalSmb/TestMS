@@ -10,18 +10,23 @@ import About from "./components/other/About";
 import UserDash from "./components/Dashboard/UserDash";
 
 const App = () => {
-  const [DarkMode, setDarkMode] = useState(false);
-  useEffect(() => {
-    if (DarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [DarkMode]);
+    const [DarkMode, setDarkMode] = useState(() => {
+      const savedDarkMode = localStorage.getItem('DarkMode');
+      return savedDarkMode === 'true';
+    });
 
-  const toggleDarkMode = () => {
-    setDarkMode(!DarkMode);
-  }
+    useEffect(() => {
+      if (DarkMode) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      sessionStorage.setItem('darkMode', DarkMode);
+    }, [DarkMode]);
+
+    const toggleDarkMode = () => {
+      setDarkMode(!DarkMode);
+    };
 
 
 
