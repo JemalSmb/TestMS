@@ -41,17 +41,60 @@ const UserDash = () => {
     getUserData();
   }, []);
 
-  const handlePostAd = async (newAd) => {
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  const uploadFile = async () => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+
+    const response = await fetch(CLOUDINARY_UPLOAD_URL, {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+    return data.secure_url;
+  };
+
+  const handlePostAd = async (e) => {
+    e.preventDefault();
+
+    let uploadedImageUrl = imageUrl;
+    if (file) {
+      uploadedImageUrl = await uploadFile();
+    }
+
+    const ad = {
+      title,
+      image_url: uploadedImageUrl,
+      view_count: viewCount,
+      description,
+      posted_by: postedBy,
+      active,
+      max_views: maxViews,
+      region,
+      token_reward: tokenReward
+    };
+
+    // Serialize the ad object
+    const adQueryString = qs.stringify(ad);
+
+    // Send a POST request
     const response = await fetch(CREATE_AD_API, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/x-www-form-urlencoded"
       },
-      body: JSON.stringify({ title: newAd })
+      body: adQueryString
     });
-    const ad = await response.json();
-    setAds([...ads, ad]);
+
+    const result = await response.json();
+    console.log(result);
   };
+
 
   const handleDeleteAd = async (adId) => {
     await fetch(DELETE_AD_API, {
@@ -73,10 +116,6 @@ const UserDash = () => {
       };
       reader.readAsText(file);
     }
-  };
-
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
   };
 
   return (
@@ -104,8 +143,7 @@ const UserDash = () => {
           ))}
         </ul>
         <div className="flex items-center mb-4">
-          <button onClick={() => handlePostAd("New Ad")} className="mr-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Post New Ad</button>
-          <form onSubmit={postAd}>
+        <form onSubmit={handlePostAd}>
         <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
         <input type="text" placeholder="Image URL" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} required />
         <input type="number" placeholder="View Count" value={viewCount} onChange={(e) => setViewCount(Number(e.target.value))} required />
@@ -116,9 +154,8 @@ const UserDash = () => {
         <input type="text" placeholder="Region" value={region} onChange={(e) => setRegion(e.target.value)} required />
         <input type="number" placeholder="Token Reward" value={tokenReward} onChange={(e) => setTokenReward(Number(e.target.value))} required />
         <input type="file" onChange={handleFileChange} className="mr-4 text-black dark:text-white" />
-          </form>
-          <button onClick={handleUploadAd} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Post Ad</button>
-
+        <button type="submit">Post Ad</button>
+        </form>
         </div>
       </section>
     </div>
