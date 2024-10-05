@@ -15,6 +15,7 @@ const UserDash = () => {
   const [maxViews, setMaxViews] = useState(0);
   const [region, setRegion] = useState("");
   const [tokenReward, setTokenReward] = useState(0);
+  const [tokens, setTokens] = useState(0);
   const [profile, setProfile] = useState({});
   const [ads, setAds] = useState([]);
   const [file, setFile] = useState(null);
