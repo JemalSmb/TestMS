@@ -116,8 +116,9 @@ const UserDash = () => {
         <input type="text" placeholder="Region" value={region} onChange={(e) => setRegion(e.target.value)} required />
         <input type="number" placeholder="Token Reward" value={tokenReward} onChange={(e) => setTokenReward(Number(e.target.value))} required />
         <input type="file" onChange={handleFileChange} className="mr-4 text-black dark:text-white" />
-          <button onClick={handleUploadAd} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Post Ad</button>
           </form>
+          <button onClick={handleUploadAd} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Post Ad</button>
+
         </div>
       </section>
     </div>
