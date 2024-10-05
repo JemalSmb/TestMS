@@ -7,6 +7,7 @@ import { Routes, Route } from 'react-router-dom';
 import ToS from "./components/other/ToS";
 import PrivacyPolicy from "./components/other/PrivacyP";
 import About from "./components/other/About";
+import UserDash from "./components/Dashboard/UserDash";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/tos" element={<ToS />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/dashboard" element={<UserDash />} />
           </Routes>
         </main>
         <Footer />
