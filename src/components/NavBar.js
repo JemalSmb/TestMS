@@ -60,7 +60,7 @@ function NavBar(){
             <div className="navbar bg-transparent" classnName={`${DarkMode && 'Dark'}`}>
                 <div className="flex-1">
                     <a href="/" className="btn btn-ghost text-xl flex items-center space-x-2">
-                        <img   src={DarkMode ? '/DarkLogo.png' : '/Logo.png'} alt="MetaSurf Logo" width={40} height={40} className='rounded-full'/>
+                        <img   src={DarkMode ? '/LogoDark.png' : '/Logo.png'} alt="MetaSurf Logo" width={40} height={40} className='rounded-full'/>
                     </a>
                 </div>
 
