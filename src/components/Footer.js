@@ -6,7 +6,7 @@ import GithubIcon from '../../public/github.svg';
 import LinkedinIcon from '../../public/linkedin.svg';
 import { useNavigate, useEffect, useState } from "react-router-dom";
 
-const MetaFooter = () => {
+function MetaFooter() {
 
     const navigate = useNavigate();
     const [DarkMode, setDarkMode] = useState(false);
