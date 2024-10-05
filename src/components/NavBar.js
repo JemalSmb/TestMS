@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import React from 'react';
 import ReactModal from 'react-modal';
 import logo from "../../public/Logo.png";
-import DarkLogo from "../../public/DarkLogo.png";
 import LoginForm from './Login/Login';
 import SignUpForm from './Signup/Signup';
 import { useNavigate } from "react-router-dom";
@@ -17,7 +16,6 @@ function NavBar(){
     const [DarkMode, setDarkMode] = useState(false);
 
     useEffect(() => {
-        console.log("DarkMode:", DarkMode, "Logo:", DarkMode ? DarkLogo : logo);
         if (DarkMode) {
             document.documentElement.classList.add('dark');
         } else {
@@ -62,7 +60,7 @@ function NavBar(){
             <div className="navbar bg-transparent" classnName={`${DarkMode && 'Dark'}`}>
                 <div className="flex-1">
                     <a href="/" className="btn btn-ghost text-xl flex items-center space-x-2">
-                        <img src={DarkMode ? DarkLogo : logo} alt="MetaSurf Logo" width={40} height={40} className='rounded-full'/>
+                        <img   src={DarkMode ? '/DarkLogo.png' : '/Logo.png'} alt="MetaSurf Logo" width={40} height={40} className='rounded-full'/>
                     </a>
                 </div>
 

@@ -1,7 +1,5 @@
 import React from 'react';
 import { Img } from 'react-image';
-import logo from '../../public/Logo.png';
-import DarkLogo from "../../public/DarkLogo.png";
 import DiscordIcon from '../../public/discord.svg';
 import TwitterIcon from '../../public/twitter.svg';
 import GithubIcon from '../../public/github.svg';
@@ -17,7 +15,7 @@ const MetaFooter = () => {
             <div className="grid justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
                 <div className="space-y-4 mb-8">
                     <a href="/" className="text-2xl font-semibold flex items-center space-x-3">
-                        <Img src={DarkMode ? DarkLogo : logo}  alt="MetaSurfAi Logo" width={32} height={32} className="object-scale-down h-8 w-8 inline-block rounded-full" />
+                        <Img   src={DarkMode ? '/DarkLogo.png' : '/Logo.png'}  alt="MetaSurfAi Logo" width={32} height={32} className="object-scale-down h-8 w-8 inline-block rounded-full" />
                         <span className="text-white font-Oxanium text-2xl font-bold pt-2">MetaSurfAi</span>
                     </a>
                 </div>
