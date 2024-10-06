@@ -101,7 +101,7 @@ const NavBar = ({ DarkMode, toggleDarkMode }) => {
                 {isMenuOpen && (
                     <div className="fixed inset-0 bg-gray-800 z-50 flex justify-center items-center">
                         <div className="bg-gray w-full h-full p-4 relative">
-                            <button className="absolute top-4 right-4 text-gray-400 text-3xl" onClick={toggleMenu}>
+                            <button className="absolute top-4 right-4 text-gray-400 text-3xl" onClick={toggleMenu()}>
                                 &times;
                             </button>
                             <ul className="py-1 mt-8">
@@ -114,7 +114,7 @@ const NavBar = ({ DarkMode, toggleDarkMode }) => {
                                 <li><a className="block px-4 py-2 text-lg text-gray-400"
                                 onClick={() => { openSignUpForm(); toggleMenu();}}>Signup</a></li>
                                 <li className='block px-4 py-2 text-lg text-gray-400'
-                                 onClick={() => { toggleDarkMode }}>Theme</li>
+                                 onClick={() => { toggleDarkMode(); toggleMenu(); }}>Theme</li>
                             </ul>
                         </div>
                     </div>
