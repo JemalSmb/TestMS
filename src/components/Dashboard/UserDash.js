@@ -22,7 +22,7 @@ const UserDash = () => {
   const [ads, setAds] = useState([]);
   const [file, setFile] = useState(null);
   const [filePreview, setFilePreview] = useState(null);
-  
+
   const ad = {
       title,
       image_url: imageUrl,
@@ -141,7 +141,7 @@ const UserDash = () => {
             </li>
           ))}
         </ul>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 gap-14">
         <form onSubmit={handlePostAd}>
         <input type="text" className='bg-transparent text-black dark:text-white' placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
         <input type="text" className='bg-transparent text-black dark:text-white' placeholder="Image URL" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} required />
@@ -150,10 +150,8 @@ const UserDash = () => {
         <input type="number" className='bg-transparent text-black dark:text-white' placeholder="Max Views" value={maxViews} onChange={(e) => setMaxViews(Number(e.target.value))} required />
         <input type="text"  className='bg-transparent text-black dark:text-white' placeholder="Region" value={region} onChange={(e) => setRegion(e.target.value)} required />
         <input type="number" className='bg-transparent text-black dark:text-white' placeholder="Token Reward" value={tokenReward} onChange={(e) => setTokenReward(Number(e.target.value))} required />
-        <div className="col-span-3 flex items-center">
-          <input type="file" onChange={handleFileChange} className="mr-4 text-black dark:text-white" />
+        <input type="file" onChange={handleFileChange} className="mr-4 text-black dark:text-white" />
           {filePreview && <img src={filePreview} alt="File Preview" className="w-20 h-20 object-cover" />}
-        </div>
         <button type="submit" className='bg-pink-600 dark:bg-blue-600 text-white rounded-2xl px-4 col-span-3'>Post Ad</button>
         </form>
         </div>
