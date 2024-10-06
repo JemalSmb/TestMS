@@ -141,7 +141,7 @@ const UserDash = () => {
             </li>
           ))}
         </ul>
-        <div className="">
+        <div>
         <form onSubmit={handlePostAd} className='grid grid-cols-3 gap-4'>
           <div className="flex flex-col space-y-4">
             <input type="text" className='bg-transparent text-black dark:text-white' placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
@@ -164,8 +164,8 @@ const UserDash = () => {
             <input type="file" onChange={handleFileChange} className="mr-4 text-black dark:text-white" />
               {filePreview && <img src={filePreview} alt="File Preview" className="w-20 h-20 object-cover" />}
           </div>
-          <button type="submit" className='bg-pink-600 dark:bg-blue-600 text-white rounded-2xl px-4 items-center'>Post Ad</button>
         </form>
+        <button type="submit" className='bg-pink-600 dark:bg-blue-600 text-white rounded-2xl px-4 items-center'>Post Ad</button>
         </div>
       </section>
     </div>
