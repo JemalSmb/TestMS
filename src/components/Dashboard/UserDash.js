@@ -165,7 +165,9 @@ const UserDash = () => {
               {filePreview && <img src={filePreview} alt="File Preview" className="w-20 h-20 object-cover" />}
           </div>
         </form>
-        <button type="submit" className='bg-pink-600 dark:bg-blue-600 text-white rounded-2xl px-4 items-center'>Post Ad</button>
+        <div className='items-center'>        
+          <button type="submit" className='bg-pink-600 dark:bg-blue-600 text-white rounded-2xl px-4'>Post Ad</button>
+        </div>
         </div>
       </section>
     </div>
