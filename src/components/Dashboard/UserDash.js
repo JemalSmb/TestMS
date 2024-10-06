@@ -77,10 +77,8 @@ const UserDash = () => {
       token_reward: tokenReward
     };
 
-    // Serialize the ad object
     const adQueryString = qs.stringify(ad);
 
-    // Send a POST request
     const response = await fetch(CREATE_AD_API, {
       method: "POST",
       headers: {

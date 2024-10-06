@@ -31,7 +31,7 @@ const App = () => {
 
 
   return (
-      <div className={`flex flex-col min-h-screen bg-white dark:bg-slate-700 ${DarkMode ? 'dark' : ''}`}>
+      <div className={`flex flex-col min-h-screen bg-white dark:bg-slate-900 ${DarkMode ? 'dark' : ''}`}>
         <NavBar DarkMode={DarkMode} toggleDarkMode={toggleDarkMode} />
         <main className="flex-grow">
           <Routes>
