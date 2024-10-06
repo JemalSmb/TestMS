@@ -113,8 +113,8 @@ const NavBar = ({ DarkMode, toggleDarkMode }) => {
                                 onClick={() => { openLoginForm(); toggleMenu();}}>Login</a></li>
                                 <li><a className="block px-4 py-2 text-lg text-gray-400"
                                 onClick={() => { openSignUpForm(); toggleMenu();}}>Signup</a></li>
-                                {/* <li className='block px-4 py-2 text-lg text-gray-400'
-                                 onClick={() => { toggleDarkMode(); toggleMenu(); }}>Theme</li> */}
+                                <li className='block px-4 py-2 text-lg text-gray-400'
+                                 onClick={() => { toggleDarkMode; toggleMenu(); }}>Theme</li>
                             </ul>
                         </div>
                     </div>
