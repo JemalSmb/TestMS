@@ -141,18 +141,24 @@ const UserDash = () => {
             </li>
           ))}
         </ul>
-        <div className="grid grid-cols-3 gap-14">
-        <form onSubmit={handlePostAd}>
-        <input type="text" className='bg-transparent text-black dark:text-white' placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
-        <input type="text" className='bg-transparent text-black dark:text-white' placeholder="Image URL" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} required />
-        <input type="text" className='bg-transparent text-black dark:text-white' placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} required />
-        <input type="text"  className='bg-transparent text-black dark:text-white' placeholder="Posted By" value={postedBy} onChange={(e) => setPostedBy(e.target.value)} required />
-        <input type="number" className='bg-transparent text-black dark:text-white' placeholder="Max Views" value={maxViews} onChange={(e) => setMaxViews(Number(e.target.value))} required />
-        <input type="text"  className='bg-transparent text-black dark:text-white' placeholder="Region" value={region} onChange={(e) => setRegion(e.target.value)} required />
-        <input type="number" className='bg-transparent text-black dark:text-white' placeholder="Token Reward" value={tokenReward} onChange={(e) => setTokenReward(Number(e.target.value))} required />
-        <input type="file" onChange={handleFileChange} className="mr-4 text-black dark:text-white" />
-          {filePreview && <img src={filePreview} alt="File Preview" className="w-20 h-20 object-cover" />}
-        <button type="submit" className='bg-pink-600 dark:bg-blue-600 text-white rounded-2xl px-4 col-span-3'>Post Ad</button>
+        <div className="">
+        <form onSubmit={handlePostAd} className='grid grid-cols-3 gap-4'>
+          <div className="flex flex-col space-y-4">
+            <input type="text" className='bg-transparent text-black dark:text-white' placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
+            <input type="text" className='bg-transparent text-black dark:text-white' placeholder="Image URL" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} required />
+            <input type="text" className='bg-transparent text-black dark:text-white' placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} required />
+          </div>
+          <div className="flex flex-col space-y-4">
+            <input type="text"  className='bg-transparent text-black dark:text-white' placeholder="Posted By" value={postedBy} onChange={(e) => setPostedBy(e.target.value)} required />
+            <input type="number" className='bg-transparent text-black dark:text-white' placeholder="Max Views" value={maxViews} onChange={(e) => setMaxViews(Number(e.target.value))} required />
+            <input type="text"  className='bg-transparent text-black dark:text-white' placeholder="Region" value={region} onChange={(e) => setRegion(e.target.value)} required />
+          </div>
+          <div className="flex flex-col items-center space-y-4">
+            <input type="number" className='bg-transparent text-black dark:text-white' placeholder="Token Reward" value={tokenReward} onChange={(e) => setTokenReward(Number(e.target.value))} required />
+            <input type="file" onChange={handleFileChange} className="mr-4 text-black dark:text-white" />
+              {filePreview && <img src={filePreview} alt="File Preview" className="w-20 h-20 object-cover" />}
+            <button type="submit" className='bg-pink-600 dark:bg-blue-600 text-white rounded-2xl px-4 col-span-3'>Post Ad</button>
+          </div>
         </form>
         </div>
       </section>
