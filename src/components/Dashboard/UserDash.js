@@ -4,6 +4,8 @@ import qs from "qs";
 const PROFILE_API = "https://metasurfai-public-api.fly.dev/v1/profile?username=nayem";
 const CREATE_AD_API = "https://metasurfai-public-api.fly.dev/v2/createOneAds";
 const DELETE_AD_API = "https://metasurfai-public-api.fly.dev/v2/deleteOneAds";
+const CLOUDINARY_UPLOAD_URL = "https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/image/upload";
+const CLOUDINARY_UPLOAD_PRESET = "YOUR_UPLOAD_PRESET";
 
 const UserDash = () => {
   const [title, setTitle] = useState("");
@@ -19,7 +21,8 @@ const UserDash = () => {
   const [profile, setProfile] = useState({});
   const [ads, setAds] = useState([]);
   const [file, setFile] = useState(null);
-
+  const [filePreview, setFilePreview] = useState(null);
+  
   const ad = {
       title,
       image_url: imageUrl,
