@@ -150,15 +150,21 @@ const UserDash = () => {
           </div>
           <div className="flex flex-col space-y-4">
             <input type="text"  className='bg-transparent text-black dark:text-white' placeholder="Posted By" value={postedBy} onChange={(e) => setPostedBy(e.target.value)} required />
-            <input type="number" className='bg-transparent text-black dark:text-white' placeholder="Max Views" value={maxViews} onChange={(e) => setMaxViews(Number(e.target.value))} required />
+            <div className="flex items-center">
+                <span className="mr-2">Max Views:</span>
+                <input type="number" className='bg-transparent text-black dark:text-white' placeholder="Max Views" value={maxViews} onChange={(e) => setMaxViews(Number(e.target.value))} required />
+            </div>
             <input type="text"  className='bg-transparent text-black dark:text-white' placeholder="Region" value={region} onChange={(e) => setRegion(e.target.value)} required />
           </div>
           <div className="flex flex-col items-center space-y-4">
-            <input type="number" className='bg-transparent text-black dark:text-white' placeholder="Token Reward" value={tokenReward} onChange={(e) => setTokenReward(Number(e.target.value))} required />
+            <div className="flex items-center">
+              <span className="mr-2">Token Reward:</span>
+              <input type="number" className='bg-transparent text-black dark:text-white' placeholder="Token Reward" value={tokenReward} onChange={(e) => setTokenReward(Number(e.target.value))} required />
+            </div>            
             <input type="file" onChange={handleFileChange} className="mr-4 text-black dark:text-white" />
               {filePreview && <img src={filePreview} alt="File Preview" className="w-20 h-20 object-cover" />}
-            <button type="submit" className='bg-pink-600 dark:bg-blue-600 text-white rounded-2xl px-4 col-span-3'>Post Ad</button>
           </div>
+          <button type="submit" className='bg-pink-600 dark:bg-blue-600 text-white rounded-2xl px-4 items-center'>Post Ad</button>
         </form>
         </div>
       </section>
