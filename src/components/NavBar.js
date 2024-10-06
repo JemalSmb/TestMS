@@ -63,7 +63,7 @@ const NavBar = ({ DarkMode, toggleDarkMode }) => {
                         <button className='bg-pink-600 dark:bg-blue-600 text-white px-4 transition-all duration-300 rounded-3xl w-24 h-10 hover:bg-grey font-sans connect-button'>{Connect.link}</button>
                     </a>
                 </div>
-                <button className='items w-8 h-8 bg-pink-600 dark:bg-blue-600 rounded-full text-2xl text-white flex justify-center items-center' onClick={toggleDarkMode}>
+                <button className='items w-8 h-8 bg-pink-600 dark:bg-blue-600 rounded-full text-2xl text-white flex justify-center items-center' onClick={toggleDarkMode()}>
                     {DarkMode ? '🌞' : '🌙'}
                     </button>
                 {/* <div className="flex-none dropdown-menu"> 
@@ -113,8 +113,8 @@ const NavBar = ({ DarkMode, toggleDarkMode }) => {
                                 onClick={() => { openLoginForm(); toggleMenu();}}>Login</a></li>
                                 <li><a className="block px-4 py-2 text-lg text-gray-400"
                                 onClick={() => { openSignUpForm(); toggleMenu();}}>Signup</a></li>
-                                {/* <li className='block px-4 py-2 text-lg text-gray-400'
-                                 onClick={() => { toggleDarkMode; toggleMenu(); }}>Theme</li> */}
+                                <li className='block px-4 py-2 text-lg text-gray-400'
+                                 onClick={() => { toggleDarkMode(); toggleMenu(); }}>Theme</li>
                             </ul>
                         </div>
                     </div>
