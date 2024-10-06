@@ -105,8 +105,7 @@ const NavBar = ({ DarkMode, toggleDarkMode }) => {
                                 &times;
                             </button>
                             <ul className="py-1 mt-8">
-                                <li><a className="block px-4 py-2 text-lg text-gray-400" 
-                                 onClick={toggleMenu()}>{Connect.link}</a></li>
+                                <li><a className="block px-4 py-2 text-lg text-gray-400" >{Connect.link}</a></li>
                                 <li><a className="block px-4 py-2 text-lg text-gray-400"   
                                 onClick={() => { navigate('Dashboard'); toggleMenu();}}>Dashboard</a></li>
                                 <li><a className="block px-4 py-2 text-lg text-gray-400"
