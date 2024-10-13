@@ -117,7 +117,7 @@ const AdHandler = () => {
           <div className=' pt-10'>
           <h className="text-black dark:text-white text-4xl font-bold">Featured Videos</h> 
           </div>
-          <div className="container pt-4 pb-4 w-11/12 min-h-screen m-auto flex flex-col ads-container" style={{ gridTemplateColumns: `repeat(auto-fill, minmax(250px, 1fr))` }}>
+          <div className="container pt-4 pb-4 w-11/12 items-center min-h-screen m-auto flex flex-col ads-container" style={{ gridTemplateColumns: `repeat(auto-fill, minmax(250px, 1fr))` }}>
           {ads.slice(0, 4).map((ad, index) => (
                         <div
                             className={`ad relative rounded-xl border-5 border-y-cyan-500 shadow-md overflow-hidden cursor-pointer ${getAspectRatioClass(ad)}`}
