@@ -44,45 +44,54 @@ const AdHandler = () => {
     // Handle ad click
     const handleAdClick = (ad) => {
         setSelectedAd(ad);
-        setTimer(10); 
-        setTimeLeft(10);
-
-
-        let countdown;
-
+        setTimer(10);
+        setTimerLeft(10);
+    
+        let countdown;  // Store the interval ID outside to access it in different functions
+    
         const startTimer = () => {
-            countdown = setInterval(() => {
-                setTimeLeft((prevTime) => {
-                    if (prevTime <= 1) {
-                        clearInterval(countdown);
-                        return 0;
-                    }
-                    return prevTime - 1;
-                });
-            }, 1000);
-        };
-
-        const stopTimer = () => {
-            clearInterval(countdown);
-        };
-
-        const handleVisibilityChange = () => {
-            if (document.hidden) {
-                stopTimer();
-            } else {
-                startTimer();
+            if (!countdown) {  // Only start the timer if one isn't already running
+                countdown = setInterval(() => {
+                    setTimer((prevTimer) => {
+                        if (prevTimer <= 1) {
+                            clearInterval(countdown);
+                            countdown = null;  // Reset countdown reference after clearing
+                            return 0;
+                        }
+                        return prevTimer - 1;
+                    });
+                }, 1000);
             }
         };
-
+    
+        const stopTimer = () => {
+            if (countdown) {  // Only clear if there's an active countdown
+                clearInterval(countdown);
+                countdown = null;  // Reset the countdown reference
+            }
+        };
+    
+        const handleVisibilityChange = () => {
+            if (document.hidden) {
+                stopTimer();  // Pause the timer when the tab is hidden
+            } else {
+                startTimer();  // Resume the timer when the tab becomes visible
+            }
+        };
+    
+        // Start the timer initially
         startTimer();
-
+    
+        // Add event listener to handle tab visibility changes
         document.addEventListener("visibilitychange", handleVisibilityChange);
-
+    
+        // Cleanup function to clear interval and event listeners
         const cleanup = () => {
-            clearInterval(countdown);
+            stopTimer();  // Ensure the timer is stopped
             document.removeEventListener("visibilitychange", handleVisibilityChange);
         };
-
+    
+        // Check if the timer reaches 0 and cleanup
         if (timer === 0) {
             cleanup();
         }

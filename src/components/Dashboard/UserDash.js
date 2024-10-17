@@ -26,8 +26,11 @@ const UserDash = () => {
   const ad = {
       title,
       image_url: imageUrl,
+      view_count,
       description,
       posted_by: postedBy,
+      active,
+      max_views,
       region,
       token_reward: tokenReward
     };
