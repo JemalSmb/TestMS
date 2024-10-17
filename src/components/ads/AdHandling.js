@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const AdHandler = () => {
     const [ads, setAds] = useState([]);
@@ -6,6 +6,7 @@ const AdHandler = () => {
     const [timer, setTimer] = useState(10);
     const [timeLeft, setTimeLeft] = useState(10);
     const [adsPerPage, setAdsPerPage] = useState(9);
+    const countdownRef = useRef(null);
 
     // Fetch ads when the component mounts
     useEffect(() => {
@@ -45,17 +46,14 @@ const AdHandler = () => {
     const handleAdClick = (ad) => {
         setSelectedAd(ad);
         setTimer(10);
-        setTimerLeft(10);
-    
-        let countdown;  // Store the interval ID outside to access it in different functions
-    
+
         const startTimer = () => {
-            if (!countdown) {  // Only start the timer if one isn't already running
-                countdown = setInterval(() => {
+            if (!countdownRef.current) {  // Only start if the timer isn't already running
+                countdownRef.current = setInterval(() => {
                     setTimer((prevTimer) => {
                         if (prevTimer <= 1) {
-                            clearInterval(countdown);
-                            countdown = null;  // Reset countdown reference after clearing
+                            clearInterval(countdownRef.current);
+                            countdownRef.current = null;  // Reset the interval ref
                             return 0;
                         }
                         return prevTimer - 1;
@@ -63,45 +61,43 @@ const AdHandler = () => {
                 }, 1000);
             }
         };
-    
+
         const stopTimer = () => {
-            if (countdown) {  // Only clear if there's an active countdown
-                clearInterval(countdown);
-                countdown = null;  // Reset the countdown reference
+            if (countdownRef.current) {  // Only clear if the timer is running
+                clearInterval(countdownRef.current);
+                countdownRef.current = null;  // Reset interval ref
             }
         };
-    
+
         const handleVisibilityChange = () => {
             if (document.hidden) {
-                stopTimer();  // Pause the timer when the tab is hidden
+                stopTimer();  // Pause timer when tab is hidden
             } else {
-                startTimer();  // Resume the timer when the tab becomes visible
+                startTimer();  // Resume timer when tab is visible
             }
         };
-    
+
         // Start the timer initially
         startTimer();
-    
-        // Add event listener to handle tab visibility changes
+
+        // Add event listener for visibility changes
         document.addEventListener("visibilitychange", handleVisibilityChange);
-    
-        // Cleanup function to clear interval and event listeners
+
+        // Cleanup function to clear interval and event listener
         const cleanup = () => {
-            stopTimer();  // Ensure the timer is stopped
+            stopTimer();  // Stop timer
             document.removeEventListener("visibilitychange", handleVisibilityChange);
         };
-    
-        // Check if the timer reaches 0 and cleanup
-        if (timer === 0) {
-            cleanup();
-        }
+
+        // Cleanup when the component unmounts or the timer is done
+        return () => cleanup();
     };
 
     // Close modal
     const closeModal = () => {
-        if (timeLeft === 0) {
+        if (timer === 0) {
             setSelectedAd(null);
-            clearInterval(countdown);
+            clearInterval(countdownRef.current);
             document.removeEventListener("visibilitychange", handleVisibilityChange);
         }
     };
