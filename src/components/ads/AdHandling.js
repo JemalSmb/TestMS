@@ -3,9 +3,9 @@ import React, { useState, useEffect, useRef } from "react";
 const AdHandler = () => {
     const [ads, setAds] = useState([]);
     const [selectedAd, setSelectedAd] = useState(null);
-    const [timer, setTimer] = useState(10);
     const [timeLeft, setTimeLeft] = useState(10);
-    const [intervalId, setIntervalId] = useState(null);
+    const [isTimerRunning, setIsTimerRunning] = useState(false);
+    let intervalId = null;
     const [adsPerPage, setAdsPerPage] = useState(9);
 
     // Fetch ads when the component mounts
@@ -45,56 +45,59 @@ const AdHandler = () => {
 
     const handleAdClick = (ad) => {
         setSelectedAd(ad);
-        setTimer(10); 
         setTimeLeft(10);
+        setIsTimerRunning(true);
+        
+        // Clear existing interval if any
+        if (intervalId) {
+            clearInterval(intervalId);
+        }
 
         const startTimer = () => {
-            const id = setInterval(() => {
+            intervalId = setInterval(() => {
                 setTimeLeft((prevTime) => {
                     if (prevTime <= 1) {
-                        clearInterval(id);
+                        clearInterval(intervalId);
+                        setIsTimerRunning(false);
                         return 0;
                     }
                     return prevTime - 1;
                 });
             }, 1000);
-            setIntervalId(id);
         };
 
         const stopTimer = () => {
-            clearInterval(id);
+            clearInterval(intervalId);
         };
 
         const handleVisibilityChange = () => {
             if (document.hidden) {
                 stopTimer();
+                setIsTimerRunning(false);
             } else {
                 startTimer();
+                setIsTimerRunning(true);
             }
         };
 
         startTimer();
-
         document.addEventListener("visibilitychange", handleVisibilityChange);
 
-        const cleanup = () => {
-            clearInterval(countdown);
+        // Cleanup function
+        return () => {
+            stopTimer();
             document.removeEventListener("visibilitychange", handleVisibilityChange);
         };
-
-        if (timer === 0) {
-            cleanup();
-        }
     };
 
-    // Close modal
     const closeModal = () => {
         if (timeLeft === 0) {
             setSelectedAd(null);
             clearInterval(intervalId);
-            document.removeEventListener("visibilitychange", handleVisibilityChange);
+            setTimeLeft(10); // Reset timeLeft for the next ad
         }
     };
+
 
     // Determine the aspect ratio class
     const getAspectRatioClass = (ad) => {
