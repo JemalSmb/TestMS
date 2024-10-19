@@ -5,8 +5,8 @@ const AdHandler = () => {
     const [selectedAd, setSelectedAd] = useState(null);
     const [timer, setTimer] = useState(10);
     const [timeLeft, setTimeLeft] = useState(10);
+    const [intervalId, setIntervalId] = useState(null);
     const [adsPerPage, setAdsPerPage] = useState(9);
-    const countdownRef = useRef(null);
 
     // Fetch ads when the component mounts
     useEffect(() => {
@@ -48,23 +48,21 @@ const AdHandler = () => {
         setTimer(10); 
         setTimeLeft(10);
 
-
-        let countdown;
-
         const startTimer = () => {
-            countdown = setInterval(() => {
+            const id = setInterval(() => {
                 setTimeLeft((prevTime) => {
                     if (prevTime <= 1) {
-                        clearInterval(countdown);
+                        clearInterval(id);
                         return 0;
                     }
                     return prevTime - 1;
                 });
             }, 1000);
+            setIntervalId(id);
         };
 
         const stopTimer = () => {
-            clearInterval(countdown);
+            clearInterval(id);
         };
 
         const handleVisibilityChange = () => {
@@ -93,7 +91,7 @@ const AdHandler = () => {
     const closeModal = () => {
         if (timeLeft === 0) {
             setSelectedAd(null);
-            clearInterval(countdown);
+            clearInterval(intervalId);
             document.removeEventListener("visibilitychange", handleVisibilityChange);
         }
     };
