@@ -5,7 +5,8 @@ const AdHandler = () => {
     const [selectedAd, setSelectedAd] = useState(null);
     const [timeLeft, setTimeLeft] = useState(10);
     const [isTimerRunning, setIsTimerRunning] = useState(false);
-    let intervalId = null;
+    const startTimeRef = useRef(null); // To store the time when the timer starts
+    const intervalIdRef = useRef(null); // To store the interval ID
     const [adsPerPage, setAdsPerPage] = useState(9);
 
     // Fetch ads when the component mounts
@@ -47,17 +48,18 @@ const AdHandler = () => {
         setSelectedAd(ad);
         setTimeLeft(10);
         setIsTimerRunning(true);
-        
+        startTimeRef.current = Date.now(); // Record the start time
+
         // Clear existing interval if any
-        if (intervalId) {
-            clearInterval(intervalId);
+        if (intervalIdRef.current) {
+            clearInterval(intervalIdRef.current);
         }
 
         const startTimer = () => {
-            intervalId = setInterval(() => {
+            intervalIdRef.current = setInterval(() => {
                 setTimeLeft((prevTime) => {
                     if (prevTime <= 1) {
-                        clearInterval(intervalId);
+                        clearInterval(intervalIdRef.current);
                         setIsTimerRunning(false);
                         return 0;
                     }
@@ -67,16 +69,17 @@ const AdHandler = () => {
         };
 
         const stopTimer = () => {
-            clearInterval(intervalId);
+            clearInterval(intervalIdRef.current);
+            setIsTimerRunning(false);
         };
 
         const handleVisibilityChange = () => {
             if (document.hidden) {
                 stopTimer();
-                setIsTimerRunning(false);
             } else {
+                const elapsedTime = Math.floor((Date.now() - startTimeRef.current) / 1000);
+                setTimeLeft((prevTime) => Math.max(prevTime - elapsedTime, 0)); // Adjust time left based on elapsed time
                 startTimer();
-                setIsTimerRunning(true);
             }
         };
 
@@ -93,7 +96,7 @@ const AdHandler = () => {
     const closeModal = () => {
         if (timeLeft === 0) {
             setSelectedAd(null);
-            clearInterval(intervalId);
+            clearInterval(intervalIdRef.current);
             setTimeLeft(10); // Reset timeLeft for the next ad
         }
     };
