@@ -41,63 +41,59 @@ const AdHandler = () => {
         window.addEventListener("resize", updateAdsPerPage);
         return () => window.removeEventListener("resize", updateAdsPerPage);
     }, []);
+    
 
-    // Handle ad click
     const handleAdClick = (ad) => {
         setSelectedAd(ad);
-        setTimer(10);
+        setTimer(10); 
+        setTimeLeft(10);
+
+
+        let countdown;
 
         const startTimer = () => {
-            if (!countdownRef.current) {  // Only start if the timer isn't already running
-                countdownRef.current = setInterval(() => {
-                    setTimer((prevTimer) => {
-                        if (prevTimer <= 1) {
-                            clearInterval(countdownRef.current);
-                            countdownRef.current = null;  // Reset the interval ref
-                            return 0;
-                        }
-                        return prevTimer - 1;
-                    });
-                }, 1000);
-            }
+            countdown = setInterval(() => {
+                setTimeLeft((prevTime) => {
+                    if (prevTime <= 1) {
+                        clearInterval(countdown);
+                        return 0;
+                    }
+                    return prevTime - 1;
+                });
+            }, 1000);
         };
 
         const stopTimer = () => {
-            if (countdownRef.current) {  // Only clear if the timer is running
-                clearInterval(countdownRef.current);
-                countdownRef.current = null;  // Reset interval ref
-            }
+            clearInterval(countdown);
         };
 
         const handleVisibilityChange = () => {
             if (document.hidden) {
-                stopTimer();  // Pause timer when tab is hidden
+                stopTimer();
             } else {
-                startTimer();  // Resume timer when tab is visible
+                startTimer();
             }
         };
 
-        // Start the timer initially
         startTimer();
 
-        // Add event listener for visibility changes
         document.addEventListener("visibilitychange", handleVisibilityChange);
 
-        // Cleanup function to clear interval and event listener
         const cleanup = () => {
-            stopTimer();  // Stop timer
+            clearInterval(countdown);
             document.removeEventListener("visibilitychange", handleVisibilityChange);
         };
 
-        // Cleanup when the component unmounts or the timer is done
-        return () => cleanup();
+        if (timer === 0) {
+            cleanup();
+        }
     };
 
     // Close modal
     const closeModal = () => {
-        if (timer === 0) {
+        if (timeLeft === 0) {
             setSelectedAd(null);
-            clearInterval(countdownRef.current);
+            clearInterval(countdown);
             document.removeEventListener("visibilitychange", handleVisibilityChange);
         }
     };
