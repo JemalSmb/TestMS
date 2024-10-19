@@ -75,9 +75,11 @@ const AdHandler = () => {
         if (document.hidden) {
             cancelAnimationFrame(animationFrameIdRef.current); // Pause the countdown
         } else {
-            // Calculate remaining time based on the target date
-            const remainingTime = Math.floor((targetDateRef.current - new Date().getTime()) / 1000);
+            // Calculate remaining time based on the target date and update last update time
+            const currentTime = new Date().getTime();
+            const remainingTime = Math.floor((targetDateRef.current - currentTime) / 1000);
             setRemainingSeconds(remainingTime >= 0 ? remainingTime : 0); // Update remaining seconds
+            lastUpdateTimeRef.current = currentTime; // Update last update time
             countItDown(); // Resume countdown
         }
     };
