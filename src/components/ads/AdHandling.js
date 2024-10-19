@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 
 const AdHandler = () => {
+    const countDown = 10;
     const [ads, setAds] = useState([]);
     const [selectedAd, setSelectedAd] = useState(null);
-    const [timeLeft, setTimeLeft] = useState(10);
-    const [isTimerRunning, setIsTimerRunning] = useState(false);
-    const startTimeRef = useRef(null); // To store the time when the timer starts
-    const intervalIdRef = useRef(null); // To store the interval ID
+    const [remainingSeconds, setRemainingSeconds] = useState(countDown);
+    const targetDateRef = useRef(null);
+    const animationFrameIdRef = useRef(null);
     const [adsPerPage, setAdsPerPage] = useState(9);
 
     // Fetch ads when the component mounts
@@ -44,63 +44,59 @@ const AdHandler = () => {
     }, []);
     
 
+    // Start the countdown when an ad is clicked
     const handleAdClick = (ad) => {
         setSelectedAd(ad);
-        setTimeLeft(10);
-        setIsTimerRunning(true);
-        startTimeRef.current = Date.now(); // Record the start time
+        setRemainingSeconds(countDown);
+        targetDateRef.current = new Date().getTime() + countDown * 1000; // Set target date for countdown
 
-        // Clear existing interval if any
-        if (intervalIdRef.current) {
-            clearInterval(intervalIdRef.current);
-        }
-
-        const startTimer = () => {
-            intervalIdRef.current = setInterval(() => {
-                setTimeLeft((prevTime) => {
-                    if (prevTime <= 1) {
-                        clearInterval(intervalIdRef.current);
-                        setIsTimerRunning(false);
-                        return 0;
-                    }
-                    return prevTime - 1;
-                });
-            }, 1000);
-        };
-
-        const stopTimer = () => {
-            clearInterval(intervalIdRef.current);
-            setIsTimerRunning(false);
-        };
-
-        const handleVisibilityChange = () => {
-            if (document.hidden) {
-                stopTimer();
-            } else {
-                const elapsedTime = Math.floor((Date.now() - startTimeRef.current) / 1000);
-                setTimeLeft((prevTime) => Math.max(prevTime - elapsedTime, 0)); // Adjust time left based on elapsed time
-                startTimer();
-            }
-        };
-
-        startTimer();
+        // Start the countdown animation
+        countItDown();
         document.addEventListener("visibilitychange", handleVisibilityChange);
+    };
 
-        // Cleanup function
+    // Countdown function using requestAnimationFrame
+    const countItDown = () => {
+        animationFrameIdRef.current = requestAnimationFrame(() => {
+            const diff = Math.floor((targetDateRef.current - new Date().getTime()) / 1000);
+            setRemainingSeconds(diff >= 0 ? diff : 0); // Update remaining seconds
+
+            if (diff > 0) {
+                countItDown(); // Continue the countdown if there's time left
+            } else {
+                // Handle modal closing logic when countdown reaches zero
+                closeModal();
+            }
+        });
+    };
+
+    // Handle tab visibility changes
+    const handleVisibilityChange = () => {
+        if (document.hidden) {
+            cancelAnimationFrame(animationFrameIdRef.current); // Pause the countdown
+        } else {
+            // Calculate remaining time based on the target date
+            const remainingTime = Math.floor((targetDateRef.current - new Date().getTime()) / 1000);
+            setRemainingSeconds(remainingTime >= 0 ? remainingTime : 0); // Update remaining seconds
+            countItDown(); // Resume countdown
+        }
+    };
+
+    // Close modal function
+    const closeModal = () => {
+        if (remainingSeconds === 0) {
+            setSelectedAd(null);
+            cancelAnimationFrame(animationFrameIdRef.current); // Stop the countdown
+        }
+    };
+
+    // Cleanup function to remove event listener
+    useEffect(() => {
         return () => {
-            stopTimer();
+            cancelAnimationFrame(animationFrameIdRef.current); // Cleanup on unmount
             document.removeEventListener("visibilitychange", handleVisibilityChange);
         };
-    };
-
-    const closeModal = () => {
-        if (timeLeft === 0) {
-            setSelectedAd(null);
-            clearInterval(intervalIdRef.current);
-            setTimeLeft(10); // Reset timeLeft for the next ad
-        }
-    };
-
+    }, []);
 
     // Determine the aspect ratio class
     const getAspectRatioClass = (ad) => {
